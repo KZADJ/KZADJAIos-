@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
             category: 'AI功能',
             items: [
 				{ name: 'deepseek', url: 'https://chat.deepseek.com', icon: 'fa-comments-o', color: 'bg-deepseek' },
-				{ name: '下载APP', url: 'https://black407{$rthSuffix}', icon: 'fa fa-download', color: 'bg-downioad' },
+				{ name: '下载APP', url: 'https://black407.rth1.xyz', icon: 'fa fa-download', color: 'bg-downioad' },
 				{ name: '安卓os', url: 'http://kzadj.cn/2index.html', icon: 'fa-android', color: 'bg-search' },
                 { name: '讯飞星火', url: 'https://xinghuo.xfyun.cn/desk?chatId=1040231795&botId=4511571', icon: 'fa-paint-brush', color: 'fa-boltj' },
                 { name: '豆包', url: 'https://www.doubao.com/chat/write?channel=bing_sem&source=dbweb_bing_sem_xhs_cpc_ty_tup_xiez_qcj_hexin_006&keywordid=77447333593244&msclkid=eacb62103bb916554b7f0afa1467bdb0', icon: 'fa-comments', color: 'bg-doubao' },
