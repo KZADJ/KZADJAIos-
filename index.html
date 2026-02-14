@@ -1,0 +1,3982 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KZADJAI 🎨os⁰¹</title>
+    
+    <!-- 使用国内CDN -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/tailwindcss/3.2.6/tailwind.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- 使用国内字体服务替代Google Fonts -->
+    <link href="https://fonts.loli.net/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366F1',
+                        secondary: '#8B5CF6',
+                        accent: '#EC4899',
+                        success: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444',
+                        info: '#0EA5E9',
+                        dark: '#1F2937',
+                        light: '#f9fafb',
+                        ai_primary: '#10B981',
+                        ai_secondary: '#0EA5E9',
+                        ai_accent: '#F59E0B',
+                        search: '#06B6D4',
+                        shopping: '#EC4899',
+                        social: '#8B5CF6',
+                        video: '#F59E0B',
+                        news: '#10B981',
+                        tools: '#EF4444',
+                        work: '#6366F1',
+                        travel: '#0EA5E9',
+                        health: '#14B8A6',
+                        finance: '#F59E0B',
+                        education: '#8B5CF6',
+                        entertainment: '#EC4899',
+                        productivity: '#8B5CF6',
+                        lifestyle: '#14B8A6',
+                        deepseek: '#7E3AF2',
+                        doubao: '#1C64F2',
+                        kzadj: '#FF6B6B',
+                        system: '#8B5CF6',
+                        upgrade: '#10B981',
+                        yuanbao: '#FF9500',
+                        wildswordsman: '#A78BFA',
+                        night_bg: '#1E293B',
+                        night_card: '#334155',
+                        wechat: '#07C160',
+                        qq: '#12B7F5',
+                        douyin: '#000000',
+                        kuaishou: '#FF5000',
+                        pinduoduo: '#E42E2C',
+                        suning: '#0083CF',
+                        meituan: '#FFC300',
+                        eleme: '#009EFF',
+                        didi: '#FF7A00',
+                        tencent_news: '#12B7F5',
+                        music: '#E60026',
+                        qqmusic: '#31C27C',
+                        douban: '#2E963D',
+                        zhihu: '#0084FF',
+                        tieba: '#3385FF',
+                        youtube: '#FF0000',
+                        stackoverflow: '#F48024',
+                        iqiyi: '#00B0FF',
+                        tencent_video: '#12B7F5',
+                        youku: '#00B0F0',
+                        ctrip: '#1BA9EE',
+                        qunar: '#1BA9EE',
+                        mafengwo: '#FF6A00'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- 引用外部CSS文件 -->
+    <link rel="stylesheet" href="6.css">
+    <base target="_blank">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- ===== 电脑桌面界面 ===== -->
+    <div class="computer-desktop hidden" id="computerDesktop">
+        <!-- 电脑桌面任务栏 -->
+        <div class="desktop-taskbar">
+            <div class="taskbar-left">
+                <div class="taskbar-app" id="desktopStartMenu">
+                    <i class="fa fa-windows"></i>
+                    <span>用分</span>
+                </div>
+                <div class="taskbar-app" id="desktopSearch">
+                    <i class="fa fa-search"></i>
+                    <span>搜索</span>
+                </div>
+                <div class="taskbar-app" id="desktopAI">
+                    <i class="fa fa-android"></i>
+                    <span>KZADJAI</span>
+                </div>
+            </div>
+            
+            <div class="taskbar-right">
+                <div id="desktopTime">12:00</div>
+                <div id="desktopDate">2025年12月1日</div>
+                <div class="taskbar-app" id="desktopSettings">
+                    <i class="fa fa-cog"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 电脑桌面壁纸区域 -->
+        <div class="desktop-wallpaper">
+            <div class="desktop-icons" id="desktopIcons">
+                <!-- 桌面图标将通过JavaScript动态生成 -->
+            </div>
+        </div>
+        
+        <!-- 电脑桌面底部Dock栏 -->
+        <div class="desktop-dock">
+            <div class="dock-icon bg-kzadj" data-action="openAI">
+                <i class="fa fa-android"></i>
+            </div>
+            <div class="dock-icon bg-info" data-action="openNavigation">
+                <i class="fa fa-compass"></i>
+            </div>
+            <div class="dock-icon bg-warning" data-action="openTools">
+                <i class="fa fa-wrench"></i>
+            </div>
+            <div class="dock-icon bg-system" data-action="openSystem">
+                <i class="fa fa-cog"></i>
+            </div>
+            <div class="dock-icon bg-success" data-action="openFriend">
+                <i class="fa fa-user-plus"></i>
+            </div>
+            <div class="dock-icon bg-search" data-action="openSearchUpgrade">
+                <i class="fa fa-search-plus"></i>
+            </div>
+        </div>
+        
+        <!-- 电脑桌面窗口 -->
+        <div class="desktop-window" id="desktopWindow">
+            <div class="window-header">
+                <div class="window-controls">
+                    <div class="window-btn close" id="windowClose"></div>
+                    <div class="window-btn minimize" id="windowMinimize"></div>
+                    <div class="window-btn maximize" id="windowMaximize"></div>
+                </div>
+                <div class="window-title" id="windowTitle">KZADJ AI</div>
+                <div></div>
+            </div>
+            <div class="window-content" id="windowContent">
+                <!-- 窗口内容将在这里动态加载 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 桌面切换按钮 -->
+    <div class="desktop-toggle glass-effect" id="desktopToggle" title="切换电脑桌面模式">
+        <i class="fa fa-desktop"></i>
+    </div>
+    
+    <!-- ===== 原有浮动按钮和功能（保持不变）===== -->
+    <!-- 主题切换按钮 -->
+    <div class="theme-toggle glass-effect" id="themeToggle">
+        <i class="fa fa-moon-o" id="themeIcon"></i>
+    </div>
+
+    <!-- 动画控制按钮 -->
+    <div class="animation-control glass-effect" id="animationControl">
+        <i class="fa fa-pause" id="animationIcon"></i>
+    </div>
+
+    <!-- 系统状态指示器 -->
+    <div class="system-status">
+        <div class="status-indicator" id="systemStatus">
+            <i class="fa fa-check-circle"></i>
+            <span>系统正常</span>
+        </div>
+        <div class="status-indicator" id="aiStatus">
+            <i class="fa fa-android"></i>
+            <!-- 移除AI在线文字 -->
+        </div>
+    </div>
+
+    <!-- 升级面板 -->
+    <div class="upgrade-panel glass-effect" id="upgradePanel">
+        <div class="upgrade-header">
+            <div class="upgrade-title">系统升级</div>
+            <button class="upgrade-close" id="closeUpgrade">×</button>
+        </div>
+        <div class="upgrade-content">
+            <div id="upgradeMessage">发现新版本 v2.5.0，是否立即升级？</div>
+            <div class="upgrade-progress hidden" id="upgradeProgress">
+                <div class="upgrade-progress-bar" id="upgradeProgressBar"></div>
+            </div>
+        </div>
+        <button class="upgrade-btn" id="startUpgrade">立即升级</button>
+    </div>
+
+    <!-- 漂浮按钮容器 - 修改为底部居中 -->
+    <div id="floatContainer">
+        <!-- 主按钮 - 带折角效果 -->
+        <div id="mainBtn" class="floating-btn w-14 h-14 rounded-full bg-kzadj text-white shadow-lg flex items-center justify-center text-xl pulse-slow z-30 folded-corner glass-effect">
+            <i class="fa fa-plus"></i>
+        </div>
+
+        <!-- AI按钮 -->
+        <div id="aiBtn" class="floating-btn w-14 h-14 rounded-full bg-ai_primary text-white shadow-lg flex items-center justify-center text-xl pulse-slow z-30 folded-corner glow-effect ai-color-changing glass-effect">
+            <i class="fa fa-android"></i>
+        </div>
+
+        <!-- 导航按钮 -->
+        <div id="navBtn" class="floating-btn w-14 h-14 rounded-full bg-info text-white shadow-lg flex items-center justify-center text-xl pulse-slow z-30 folded-corner glass-effect">
+            <i class="fa fa-compass"></i>
+        </div>
+
+        <!-- 工具按钮 -->
+        <div id="toolsBtn" class="floating-btn w-14 h-14 rounded-full bg-warning text-white shadow-lg flex items-center justify-center text-xl pulse-slow z-30 folded-corner glass-effect">
+            <i class="fa fa-wrench"></i>
+        </div>
+
+        <!-- 系统按钮 -->
+        <div id="systemBtn" class="floating-btn w-14 h-14 rounded-full bg-system text-white shadow-lg flex items-center justify-center text-xl pulse-slow z-30 folded-corner glass-effect">
+            <i class="fa fa-cog"></i>
+        </div>
+        
+        <!-- 加好友按钮 -->
+        <div id="friendBtn" class="floating-btn w-14 h-14 rounded-full bg-success text-white shadow-lg flex items-center justify-center text-xl pulse-slow z-30 folded-corner glass-effect">
+            <i class="fa fa-user-plus"></i>
+        </div>
+
+        <!-- 搜索引擎升级按钮 -->
+        <div id="searchUpgradeBtn" class="floating-btn w-14 h-14 rounded-full bg-search text-white shadow-lg flex items-center justify-center text-xl pulse-slow z-30 folded-corner glass-effect">
+            <i class="fa fa-search-plus"></i>
+        </div>
+
+        <!-- 工具提示 -->
+        <div class="tooltip"></div>
+    </div>
+
+    <!-- 居中功能按钮容器 -->
+    <div class="center-buttons-container" id="centerButtonsContainer"></div>
+
+    <!-- 通知组件 -->
+    <div id="notification" class="notification"></div>
+
+    <!-- 功能面板和遮罩 -->
+    <div class="panel-overlay" id="panelOverlay"></div>
+    
+    <!-- 搜索引擎升级面板 -->
+    <div class="search-upgrade-panel glass-effect" id="searchUpgradePanel">
+        <div class="panel-header">
+            <h3 class="panel-title">KZADJ AI 超级搜索 v2.5.0</h3>
+            <button class="close-panel" id="closeSearchUpgrade">×</button>
+        </div>
+        
+        <div class="mb-4">
+            <h4 class="font-semibold mb-2">多引擎智能搜索</h4>
+            <div class="ai-input-group">
+                <input type="text" class="ai-input" id="multiSearchInput" placeholder="输入搜索关键词...">
+                <button class="ai-send-btn" id="multiSearchBtn">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-2">
+                <label class="flex items-center">
+                    <input type="checkbox" class="mr-1" name="searchEngine" value="baidu" checked> 百度
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="mr-1" name="searchEngine" value="bing" checked> 必应
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="mr-1" name="searchEngine" value="google"> 谷歌
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="mr-1" name="searchEngine" value="sogou"> 搜狗
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="mr-1" name="searchEngine" value="360"> 360
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="mr-1" name="searchEngine" value="weibo"> 微博
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="mr-1" name="searchEngine" value="zhihu"> 知乎
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="mr-1" name="searchEngine" value="douyin"> 抖音
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="mr-1" name="searchEngine" value="kuaishou"> 快手
+                </label>
+            </div>
+            
+            <div class="mt-2 flex gap-2">
+                <button class="save-notes bg-search flex-1" id="selectAllEngines">全选</button>
+                <button class="save-notes bg-gray-500 flex-1" id="deselectAllEngines">全不选</button>
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <h4 class="font-semibold mb-2">AI智能搜索建议</h4>
+            <div class="ai-suggestion">
+                <strong>搜索优化建议:</strong> 
+                <div id="aiSearchSuggestions">输入关键词获取AI优化建议...</div>
+            </div>
+            <button class="save-notes bg-ai_primary w-full mt-2" id="aiOptimizeSearch">AI优化搜索词</button>
+        </div>
+        
+        <div class="mb-4">
+            <h4 class="font-semibold mb-2">快速访问 - 全网平台</h4>
+            <div class="grid grid-cols-3 gap-3">
+                <!-- 搜索引擎 -->
+                <div class="quick-access-item bg-search text-white text-center p-2 rounded cursor-pointer" data-url="https://www.baidu.com">
+                    <i class="fa fa-search block text-xl mb-1"></i>
+                    <span class="text-xs">百度</span>
+                </div>
+                <div class="quick-access-item bg-info text-white text-center p-2 rounded cursor-pointer" data-url="https://www.bing.com">
+                    <i class="fa fa-windows block text-xl mb-1"></i>
+                    <span class="text-xs">必应</span>
+                </div>
+                <div class="quick-access-item bg-danger text-white text-center p-2 rounded cursor-pointer" data-url="https://www.google.com">
+                    <i class="fa fa-google block text-xl mb-1"></i>
+                    <span class="text-xs">谷歌</span>
+                </div>
+                <div class="quick-access-item bg-warning text-white text-center p-2 rounded cursor-pointer" data-url="https://www.sogou.com">
+                    <i class="fa fa-paw block text-xl mb-1"></i>
+                    <span class="text-xs">搜狗</span>
+                </div>
+                <div class="quick-access-item bg-success text-white text-center p-2 rounded cursor-pointer" data-url="https://www.so.com">
+                    <i class="fa fa-shield block text-xl mb-1"></i>
+                    <span class="text-xs">360</span>
+                </div>
+                
+                <!-- 社交平台 -->
+                <div class="quick-access-item bg-social text-white text-center p-2 rounded cursor-pointer" data-url="https://weibo.com">
+                    <i class="fa fa-weibo block text-xl mb-1"></i>
+                    <span class="text-xs">微博</span>
+                </div>
+                <div class="quick-access-item bg-wechat text-white text-center p-2 rounded cursor-pointer" data-url="https://wx.qq.com">
+                    <i class="fa fa-wechat block text-xl mb-1"></i>
+                    <span class="text-xs">微信</span>
+                </div>
+                <div class="quick-access-item bg-qq text-white text-center p-2 rounded cursor-pointer" data-url="https://im.qq.com">
+                    <i class="fa fa-qq block text-xl mb-1"></i>
+                    <span class="text-xs">QQ</span>
+                </div>
+                
+                <!-- 知识社区 -->
+                <div class="quick-access-item bg-education text-white text-center p-2 rounded cursor-pointer" data-url="https://www.zhihu.com">
+                    <i class="fa fa-question-circle block text-xl mb-1"></i>
+                    <span class="text-xs">知乎</span>
+                </div>
+                <div class="quick-access-item bg-dark text-white text-center p-2 rounded cursor-pointer" data-url="https://github.com">
+                    <i class="fa fa-github block text-xl mb-1"></i>
+                    <span class="text-xs">Github</span>
+                </div>
+                <div class="quick-access-item bg-stackoverflow text-white text-center p-2 rounded cursor-pointer" data-url="https://stackoverflow.com">
+                    <i class="fa fa-stack-overflow block text-xl mb-1"></i>
+                    <span class="text-xs">Stack Overflow</span>
+                </div>
+                
+                <!-- 视频平台 -->
+                <div class="quick-access-item bg-video text-white text-center p-2 rounded cursor-pointer" data-url="https://www.bilibili.com">
+                    <i class="fa fa-video-camera block text-xl mb-1"></i>
+                    <span class="text-xs">Bilibili</span>
+                </div>
+                <div class="quick-access-item bg-douyin text-white text-center p-2 rounded cursor-pointer" data-url="https://www.douyin.com">
+                    <i class="fa fa-music block text-xl mb-1"></i>
+                    <span class="text-xs">抖音</span>
+                </div>
+                <div class="quick-access-item bg-kuaishou text-white text-center p-2 rounded cursor-pointer" data-url="https://www.kuaishou.com">
+                    <i class="fa fa-play-circle block text-xl mb-1"></i>
+                    <span class="text-xs">快手</span>
+                </div>
+                <div class="quick-access-item bg-youtube text-white text-center p-2 rounded cursor-pointer" data-url="https://www.youtube.com">
+                    <i class="fa fa-youtube block text-xl mb-1"></i>
+                    <span class="text-xs">YouTube</span>
+                </div>
+                
+                <!-- 电商平台 -->
+                <div class="quick-access-item bg-shopping text-white text-center p-2 rounded cursor-pointer" data-url="https://www.taobao.com">
+                    <i class="fa fa-shopping-cart block text-xl mb-1"></i>
+                    <span class="text-xs">淘宝</span>
+                </div>
+                <div class="quick-access-item bg-shopping text-white text-center p-2 rounded cursor-pointer" data-url="https://www.jd.com">
+                    <i class="fa fa-shopping-bag block text-xl mb-1"></i>
+                    <span class="text-xs">京东</span>
+                </div>
+                <div class="quick-access-item bg-pinduoduo text-white text-center p-2 rounded cursor-pointer" data-url="https://www.pinduoduo.com">
+                    <i class="fa fa-shopping-basket block text-xl mb-1"></i>
+                    <span class="text-xs">拼多多</span>
+                </div>
+                <div class="quick-access-item bg-suning text-white text-center p-2 rounded cursor-pointer" data-url="https://www.suning.com">
+                    <i class="fa fa-home block text-xl mb-1"></i>
+                    <span class="text-xs">苏宁</span>
+                </div>
+                
+                <!-- 生活服务 -->
+                <div class="quick-access-item bg-meituan text-white text-center p-2 rounded cursor-pointer" data-url="https://www.meituan.com">
+                    <i class="fa fa-cutlery block text-xl mb-1"></i>
+                    <span class="text-xs">美团</span>
+                </div>
+                <div class="quick-access-item bg-eleme text-white text-center p-2 rounded cursor-pointer" data-url="https://www.ele.me">
+                    <i class="fa fa-motorcycle block text-xl mb-1"></i>
+                    <span class="text-xs">饿了么</span>
+                </div>
+                <div class="quick-access-item bg-didi text-white text-center p-2 rounded cursor-pointer" data-url="https://www.didiglobal.com">
+                    <i class="fa fa-car block text-xl mb-1"></i>
+                    <span class="text-xs">滴滴</span>
+                </div>
+                
+                <!-- 新闻资讯 -->
+                <div class="quick-access-item bg-news text-white text-center p-2 rounded cursor-pointer" data-url="https://www.toutiao.com">
+                    <i class="fa fa-newspaper-o block text-xl mb-1"></i>
+                    <span class="text-xs">今日头条</span>
+                </div>
+                <div class="quick-access-item bg-tencent_news text-white text-center p-2 rounded cursor-pointer" data-url="https://news.qq.com">
+                    <i class="fa fa-newspaper-o block text-xl mb-1"></i>
+                    <span class="text-xs">腾讯新闻</span>
+                </div>
+                
+                <!-- 音乐平台 -->
+                <div class="quick-access-item bg-music text-white text-center p-2 rounded cursor-pointer" data-url="https://music.163.com">
+                    <i class="fa fa-music block text-xl mb-1"></i>
+                    <span class="text-xs">网易云音乐</span>
+                </div>
+                <div class="quick-access-item bg-qqmusic text-white text-center p-2 rounded cursor-pointer" data-url="https://y.qq.com">
+                    <i class="fa fa-headphones block text-xl mb-1"></i>
+                    <span class="text-xs">QQ音乐</span>
+                </div>
+                
+                <!-- 其他重要平台 -->
+                <div class="quick-access-item bg-douban text-white text-center p-2 rounded cursor-pointer" data-url="https://www.douban.com">
+                    <i class="fa fa-film block text-xl mb-1"></i>
+                    <span class="text-xs">豆瓣</span>
+                </div>
+                <div class="quick-access-item bg-zhihu text-white text-center p-2 rounded cursor-pointer" data-url="https://www.zhihu.com">
+                    <i class="fa fa-graduation-cap block text-xl mb-1"></i>
+                    <span class="text-xs">知乎</span>
+                </div>
+                <div class="quick-access-item bg-tieba text-white text-center p-2 rounded cursor-pointer" data-url="https://tieba.baidu.com">
+                    <i class="fa fa-users block text-xl mb-1"></i>
+                    <span class="text-xs">贴吧</span>
+                </div>
+            </div>
+            
+            <div class="mt-2 flex gap-2">
+                <button class="save-notes bg-info flex-1" id="showMoreSites">显示更多</button>
+                <button class="save-notes bg-warning flex-1" id="addCustomSite">添加自定义</button>
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <h4 class="font-semibold mb-2">搜索历史与收藏</h4>
+            <div class="flex gap-2 mb-2">
+                <button class="save-notes bg-gray-500 flex-1" id="clearSearchHistory">清空历史</button>
+                <button class="save-notes bg-success flex-1" id="exportSearchData">导出数据</button>
+            </div>
+            <div id="searchHistory" class="max-h-32 overflow-y-auto">
+                <!-- 搜索历史将在这里显示 -->
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <h4 class="font-semibold mb-2">高级搜索设置</h4>
+            <div class="ai-feature-btn">
+                <i class="fa fa-clock-o"></i>
+                <span>搜索时间范围</span>
+                <select class="ml-auto" id="searchTimeRange">
+                    <option value="anytime">任何时间</option>
+                    <option value="day">过去24小时</option>
+                    <option value="week">过去一周</option>
+                    <option value="month">过去一月</option>
+                    <option value="year">过去一年</option>
+                </select>
+            </div>
+            <div class="ai-feature-btn">
+                <i class="fa fa-language"></i>
+                <span>搜索结果语言</span>
+                <select class="ml-auto" id="searchLanguage">
+                    <option value="zh">中文</option>
+                    <option value="en">英文</option>
+                    <option value="ja">日文</option>
+                    <option value="ko">韩文</option>
+                    <option value="all">所有语言</option>
+                </select>
+            </div>
+            <div class="ai-feature-btn">
+                <i class="fa fa-filter"></i>
+                <span>安全搜索</span>
+                <select class="ml-auto" id="safeSearch">
+                    <option value="moderate">中等</option>
+                    <option value="strict">严格</option>
+                    <option value="off">关闭</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 加好友面板 -->
+    <div class="friend-panel glass-effect" id="friendPanel">
+        <div class="panel-header">
+            <h3 class="panel-title">添加好友</h3>
+            <button class="close-panel" id="closeFriend">×</button>
+        </div>
+        
+        <div class="text-center mb-4">
+            <p>分享您的专属好友码，邀请好友一起使用KZADJ AI</p>
+        </div>
+        
+        <div class="friend-code" id="friendCode">KZADJ-2024-8888</div>
+        
+        <div class="qrcode-container">
+            <div class="qrcode">
+                <i class="fa fa-qrcode fa-3x text-gray-500"></i>
+            </div>
+            <p class="mt-2 text-sm">扫描二维码添加好友</p>
+        </div>
+        
+        <div class="friend-actions">
+            <button class="friend-action-btn copy-btn" id="copyFriendCode">
+                <i class="fa fa-copy"></i> 复制好友码
+            </button>
+            <button class="friend-action-btn share-btn" id="shareFriendCode">
+                <i class="fa fa-share-alt"></i> 分享好友码
+            </button>
+        </div>
+        
+        <div class="mt-4">
+            <h4 class="font-semibold mb-2">好友列表</h4>
+            <div class="ai-feature-btn">
+                <i class="fa fa-user"></i> <span>张三 - 在线</span>
+            </div>
+            <div class="ai-feature-btn">
+                <i class="fa fa-user"></i> <span>李四 - 离线</span>
+            </div>
+            <div class="ai-feature-btn">
+                <i class="fa fa-user-plus"></i> <span>添加新好友</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 导航菜单 -->
+    <div class="navigation-menu" id="navigationMenu">
+        <div class="nav-content glass-effect">
+            <div class="nav-header">
+                <h3 class="panel-title">KZADJ AI 智能导航</h3>
+                <button class="close-panel" id="closeNav">×</button>
+            </div>
+            
+            <input type="text" class="nav-search" placeholder="搜索功能或网站...">
+            
+            <div class="nav-categories">
+                <div class="nav-category bg-search text-white">搜索</div>
+                <div class="nav-category bg-social text-white">社交</div>
+                <div class="nav-category bg-news text-white">新闻</div>
+                <div class="nav-category bg-entertainment text-white">娱乐</div>
+                <div class="nav-category bg-productivity text-white">生产力</div>
+                <div class="nav-category bg-education text-white">学习</div>
+            </div>
+            
+            <div class="nav-items">
+				
+                <div class="nav-item">
+                    <i class="fa fa-play-circle text-search"></i>
+                    <span>快手直播</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-cloud text-search"></i>
+                    <span>空投快传</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-mobile text-search"></i>
+                    <span>移动云手机</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-shopping-basket text-shopping"></i>
+                    <span>拼多多</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-wechat text-social"></i>
+                    <span>微信</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-weibo text-social"></i>
+                    <span>微博</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-newspaper-o text-news"></i>
+                    <span>今日头条</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-video-camera text-video"></i>
+                    <span>哔哩哔哩</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-music text-entertainment"></i>
+                    <span>网易云</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-book text-education"></i>
+                    <span>知乎</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-github text-dark"></i>
+                    <span>Github</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-shopping-bag text-shopping"></i>
+                    <span>京东</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-shield text-success"></i>
+                    <span>360搜索</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-play-circle text-search"></i>
+                    <span>快手直播</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-search text-search"></i>
+                    <span>百度</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-google text-search"></i>
+                    <span>谷歌</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-shopping-cart text-shopping"></i>
+                    <span>淘宝</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-wechat text-social"></i>
+                    <span>微信</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-weibo text-social"></i>
+                    <span>微博</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-newspaper-o text-news"></i>
+                    <span>今日头条</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-video-camera text-video"></i>
+                    <span>哔哩哔哩</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-music text-entertainment"></i>
+                    <span>网易云</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-book text-education"></i>
+                    <span>知乎</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-github text-dark"></i>
+                    <span>Github</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-shopping-bag text-shopping"></i>
+                    <span>京东</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-shield text-success"></i>
+                    <span>360搜索</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-play-circle text-search"></i>
+                    <span>快手直播</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-search text-search"></i>
+                    <span>百度</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-google text-search"></i>
+                    <span>谷歌</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-shopping-cart text-shopping"></i>
+                    <span>淘宝</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-wechat text-social"></i>
+                    <span>微信</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-weibo text-social"></i>
+                    <span>微博</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-newspaper-o text-news"></i>
+                    <span>今日头条</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-video-camera text-video"></i>
+                    <span>哔哩哔哩</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-music text-entertainment"></i>
+                    <span>网易云</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-book text-education"></i>
+                    <span>知乎</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-github text-dark"></i>
+                    <span>Github</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-shopping-bag text-shopping"></i>
+                    <span>京东</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-shield text-success"></i>
+                    <span>360搜索</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-play-circle text-search"></i>
+                    <span>快手直播</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-search text-search"></i>
+                    <span>百度</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-google text-search"></i>
+                    <span>谷歌</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-shopping-cart text-shopping"></i>
+                    <span>淘宝</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-wechat text-social"></i>
+                    <span>微信</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-weibo text-social"></i>
+                    <span>微博</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-newspaper-o text-news"></i>
+                    <span>今日头条</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-video-camera text-video"></i>
+                    <span>哔哩哔哩</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-music text-entertainment"></i>
+                    <span>网易云</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-book text-education"></i>
+                    <span>知乎</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-github text-dark"></i>
+                    <span>Github</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-shopping-bag text-shopping"></i>
+                    <span>京东</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-shield text-success"></i>
+                    <span>360搜索</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-search text-search"></i>
+                    <span>deepseek</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-search text-search"></i>
+                    <span>百度</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-google text-search"></i>
+                    <span>谷歌</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-shopping-cart text-shopping"></i>
+                    <span>淘宝</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-wechat text-social"></i>
+                    <span>微信</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-weibo text-social"></i>
+                    <span>微博</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-newspaper-o text-news"></i>
+                    <span>今日头条</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-video-camera text-video"></i>
+                    <span>哔哩哔哩</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-music text-entertainment"></i>
+                    <span>网易云</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-book text-education"></i>
+                    <span>知乎</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-github text-dark"></i>
+                    <span>Github</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-shopping-bag text-shopping"></i>
+                    <span>京东</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fa fa-shield text-success"></i>
+                    <span>360搜索</span>
+                </div>
+            </div>
+            
+            <div class="deepseek-chat">
+                <i class="fa fa-comment"></i> DeepSeek AI聊天
+            </div>
+            
+            <div class="doubao-chat mt-2">
+                <i class="fa fa-comments"></i> 豆包AI聊天
+            </div>
+            
+            <div class="yuanbao-chat">
+                <i class="fa fa-diamond"></i> 腾讯元宝AI
+            </div>
+            
+            <div class="wildswordsman-chat mt-2">
+                <i class="fa fa-magic"></i> 野剑魔师AI
+            </div>
+            
+            <div class="kzadj-chat mt-2">
+                <i class="fa fa-star"></i> KZADJ AI全能助手
+            </div>
+        </div>
+    </div>
+
+    <!-- 系统面板 -->
+    <div class="function-panel glass-effect" id="systemPanel">
+        <div class="panel-header">
+            <h3 class="panel-title">系统设置与状态</h3>
+            <button class="close-panel" id="closeSystem">×</button>
+        </div>
+        
+        <div class="mb-4">
+            <h4 class="font-semibold mb-2">系统状态</h4>
+            <div class="health-item">
+                <div>
+                    <span>存储使用</span>
+                    <div class="storage-indicator">
+                        <div class="storage-used" id="storageUsed"></div>
+                    </div>
+                </div>
+                <span id="storageText">3.2/5MB</span>
+            </div>
+            <div class="health-item">
+                <div>
+                    <span>内存使用</span>
+                    <div class="storage-indicator">
+                        <div class="storage-used" style="width: 45%"></div>
+                    </div>
+                </div>
+                <span>45%</span>
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <h4 class="font-semibold mb-2">自动升级</h4>
+            <div class="ai-feature-btn" id="checkUpdates">
+                <i class="fa fa-refresh"></i> <span>检查更新</span>
+            </div>
+            <div class="ai-feature-btn" id="autoUpdateToggle">
+                <i class="fa fa-magic"></i> <span>自动升级: 开启</span>
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <h4 class="font-semibold mb-2">数据管理</h4>
+            <div class="ai-feature-btn" id="exportData">
+                <i class="fa fa-download"></i> <span>导出数据</span>
+            </div>
+            <div class="ai-feature-btn" id="importData">
+                <i class="fa fa-upload"></i> <span>导入数据</span>
+            </div>
+            <div class="ai-feature-btn" id="clearData">
+                <i class="fa fa-trash"></i> <span>清除缓存</span>
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <h4 class="font-semibold mb-2">AI优化</h4>
+            <div class="ai-feature-btn" id="enhanceAI">
+                <i class="fa fa-rocket"></i> <span>增强AI能力</span>
+            </div>
+            <div class="ai-feature-btn" id="trainModel">
+                <i class="fa fa-graduation-cap"></i> <span>训练个性化模型</span>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <button class="save-notes bg-upgrade w-full" id="systemDiagnostic">系统诊断</button>
+        </div>
+    </div>
+
+    <!-- 计算器面板 -->
+    <div class="function-panel glass-effect" id="calculatorPanel">
+        <div class="panel-header">
+            <h3 class="panel-title">KZADJ AI计算器</h3>
+            <button class="close-panel" id="closeCalculator">×</button>
+        </div>
+        <div class="calculator-history" id="calcHistory"></div>
+        <div class="calculator-display" id="calcDisplay">0</div>
+        <div class="calculator-buttons">
+            <button class="calc-btn clear" data-action="clear">C</button>
+            <button class="calc-btn" data-action="sign">±</button>
+            <button class="calc-btn" data-action="percent">%</button>
+            <button class="calc-btn operator" data-action="divide">÷</button>
+            <button class="calc-btn" data-number="7">7</button>
+            <button class="calc-btn" data-number="8">8</button>
+            <button class="calc-btn" data-number="9">9</button>
+            <button class="calc-btn operator" data-action="multiply">×</button>
+            <button class="calc-btn" data-number="4">4</button>
+            <button class="calc-btn" data-number="5">5</button>
+            <button class="calc-btn" data-number="6">6</button>
+            <button class="calc-btn operator" data-action="subtract">−</button>
+            <button class="calc-btn" data-number="1">1</button>
+            <button class="calc-btn" data-number="2">2</button>
+            <button class="calc-btn" data-number="3">3</button>
+            <button class="calc-btn operator" data-action="add">+</button>
+            <button class="calc-btn" data-number="0">0</button>
+            <button class="calc-btn" data-number=".">.</button>
+            <button class="calc-btn" data-action="backspace">←</button>
+            <button class="calc-btn operator" data-action="equals">=</button>
+        </div>
+        <div class="mt-4">
+            <button class="save-notes bg-ai_primary w-full" id="aiCalculate">AI计算建议</button>
+        </div>
+    </div>
+
+    <!-- 笔记面板 -->
+    <div class="function-panel glass-effect" id="notesPanel">
+        <div class="panel-header">
+            <h3 class="panel-title">KZADJ AI智能笔记</h3>
+            <button class="close-panel" id="closeNotes">×</button>
+        </div>
+        <textarea class="notes-content" id="notesContent" placeholder="在这里输入你的笔记..."></textarea>
+        <div class="flex gap-2 mt-2">
+            <button class="save-notes flex-1" id="saveNotes">保存笔记</button>
+            <button class="save-notes bg-ai_primary" id="aiSummarize">AI总结</button>
+        </div>
+        <div class="flex gap-2 mt-2">
+            <button class="save-notes bg-accent flex-1" id="aiTranslate">AI翻译</button>
+            <button class="save-notes bg-warning flex-1" id="aiImprove">AI润色</button>
+        </div>
+        <div class="flex gap-2 mt-2">
+            <button class="save-notes bg-success flex-1" id="aiSentiment">情感分析</button>
+            <button class="save-notes bg-info flex-1" id="aiKeywords">提取关键词</button>
+        </div>
+    </div>
+
+    <!-- AI面板 -->
+    <div class="function-panel glass-effect" id="aiPanel">
+        <div class="panel-header">
+            <h3 class="panel-title">KZADJ AI智能助手 v2.5.0</h3>
+            <button class="close-panel" id="closeAI">×</button>
+        </div>
+        
+        <div class="ai-selector">
+            <button class="ai-selector-btn active" data-ai="kzadj">
+                <i class="fa fa-star"></i> KZADJ AI
+            </button>
+            <button class="ai-selector-btn" data-ai="deepseek">
+                <i class="fa fa-rocket"></i> DeepSeek
+            </button>
+            <button class="ai-selector-btn" data-ai="doubao">
+                <i class="fa fa-comments"></i> 豆包AI
+            </button>
+            <button class="ai-selector-btn" data-ai="yuanbao">
+                <i class="fa fa-diamond"></i> 腾讯元宝
+            </button>
+            <button class="ai-selector-btn" data-ai="wildswordsman">
+                <i class="fa fa-magic"></i> 野剑魔师
+            </button>
+        </div>
+        
+        <div class="ai-mode-toggle">
+            <button class="mode-btn active" data-mode="chat">聊天</button>
+            <button class="mode-btn" data-mode="search">搜索</button>
+            <button class="mode-btn" data-mode="tools">AI工具</button>
+            <button class="mode-btn" data-mode="health">健康</button>
+            <button class="mode-btn" data-mode="finance">金融</button>
+            <button class="mode-btn" data-mode="creative">创作</button>
+            <button class="mode-btn" data-mode="game">游戏</button>
+        </div>
+        
+        <!-- 颜色选择器 -->
+        <div class="color-options">
+            <div class="color-option active" style="background-color: #d1fae5;" data-color="#d1fae5"></div>
+            <div class="color-option" style="background-color: #fef3c7;" data-color="#fef3c7"></div>
+            <div class="color-option" style="background-color: #fce7f3;" data-color="#fce7f3"></div>
+            <div class="color-option" style="background-color: #e0e7ff;" data-color="#e0e7ff"></div>
+            <div class="color-option" style="background-color: #dcfce7;" data-color="#dcfce7"></div>
+            <div class="color-option" style="background-color: #ffedd5;" data-color="#ffedd5"></div>
+        </div>
+        
+        <!-- 语音控制 -->
+        <div class="voice-controls">
+            <button class="voice-btn" id="startListening">
+                <i class="fa fa-microphone"></i> 语音输入
+            </button>
+            <button class="voice-btn" id="speakResponse">
+                <i class="fa fa-volume-up"></i> 朗读回复
+            </button>
+        </div>
+        
+        <!-- 聊天模式 -->
+        <div class="ai-chat-container" id="chatMode">
+            <div class="ai-chat-messages" id="aiChatMessages">
+                <div class="ai-message bot">
+                    你好！我是KZADJ AI助手 v2.5.0，我可以帮你回答问题、搜索信息、分析商机、总结内容等。有什么可以帮您的吗？
+                </div>
+            </div>
+            <div class="ai-input-group">
+                <input type="text" class="ai-input" id="aiInput" placeholder="输入您的问题或指令...">
+                <button class="ai-send-btn" id="aiSendBtn">
+                    <i class="fa fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 搜索模式 -->
+        <div class="ai-search-container hidden" id="searchMode">
+            <div class="ai-input-group">
+                <input type="text" class="ai-input" id="searchInput" placeholder="输入搜索关键词...">
+                <button class="ai-send-btn" id="searchBtn">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <!-- 搜索结果将在这里显示 -->
+            </div>
+        </div>
+        
+        <!-- AI工具模式 -->
+        <div class="hidden" id="toolsMode">
+            <div class="ai-feature-btn" data-feature="translate">
+                <i class="fa fa-language"></i> <span>文本翻译</span>
+            </div>
+            <div class="ai-feature-btn" data-feature="summarize">
+                <i class="fa fa-file-text"></i> <span>内容总结</span>
+            </div>
+            <div class="ai-feature-btn" data-feature="rewrite">
+                <i class="fa fa-edit"></i> <span>文本润色</span>
+            </div>
+            <div class="ai-feature-btn" data-feature="code">
+                <i class="fa fa-code"></i> <span>代码助手</span>
+            </div>
+            <div class="ai-feature-btn" data-feature="ideas">
+                <i class="fa fa-lightbulb-o"></i> <span>创意灵感</span>
+            </div>
+            <div class="ai-feature-btn" data-feature="business">
+                <i class="fa fa-line-chart"></i> <span>商机分析</span>
+            </div>
+            <div class="ai-feature-btn" data-feature="sentiment">
+                <i class="fa fa-smile-o"></i> <span>情感分析</span>
+            </div>
+            <div class="ai-feature-btn" data-feature="keywords">
+                <i class="fa fa-key"></i> <span>关键词提取</span>
+            </div>
+            <div class="ai-feature-btn" data-feature="image">
+                <i class="fa fa-image"></i> <span>图像分析</span>
+            </div>
+            <div class="ai-feature-btn" data-feature="writing">
+                <i class="fa fa-pencil"></i> <span>写作辅助</span>
+            </div>
+        </div>
+        
+        <!-- 健康模式 -->
+        <div class="hidden" id="healthMode">
+            <div class="health-monitor">
+                <h4 class="font-semibold mb-2">健康监测</h4>
+                <div class="health-item">
+                    <div>
+                        <span>步数</span>
+                        <div class="health-progress">
+                        <div class="health-progress-bar" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <span>6,542/10,000</span>
+                </div>
+            </div>
+            <div class="ai-input-group mt-3">
+                <input type="text" class="ai-input" id="healthInput" placeholder="咨询健康问题...">
+                <button class="ai-send-btn" id="healthBtn">
+                    <i class="fa fa-heart"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 金融模式 -->
+        <div class="hidden" id="financeMode">
+            <div class="finance-dashboard">
+                <div class="finance-card">
+                    <h4>总资产</h4>
+                    <p>¥128,650</p>
+                </div>
+                <div class="finance-card">
+                    <h4>投资收益</h4>
+                    <p>+8.2%</p>
+                </div>
+                <div class="finance-card">
+                    <h4>本月支出</h4>
+                    <p>¥8,420</p>
+                </div>
+                <div class="finance-card">
+                    <h4>预算剩余</h4>
+                    <p>¥1,580</p>
+                </div>
+            </div>
+            <div class="ai-input-group mt-3">
+                <input type="text" class="ai-input" id="financeInput" placeholder="咨询金融问题...">
+                <button class="ai-send-btn" id="financeBtn">
+                    <i class="fa fa-line-chart"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 创作模式 -->
+        <div class="hidden" id="creativeMode">
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fa fa-file-text"></i>
+                    <h4>文章创作</h4>
+                    <p>AI辅助写作</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa fa-paint-brush"></i>
+                    <h4>艺术创作</h4>
+                    <p>生成艺术作品</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa fa-music"></i>
+                    <h4>音乐生成</h4>
+                    <p>创作独特音乐</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa fa-video-camera"></i>
+                    <h4>视频脚本</h4>
+                    <p>生成视频内容</p>
+                </div>
+            </div>
+            
+            <div class="ai-input-group mt-3">
+                <input type="text" class="ai-input" id="creativeInput" placeholder="描述您的创作需求...">
+                <button class="ai-send-btn" id="creativeBtn">
+                    <i class="fa fa-magic"></i>
+                </button>
+            </div>
+            
+            <div class="ai-response-area" id="creativeOutput">
+                <!-- 创作结果将在这里显示 -->
+            </div>
+        </div>
+        
+        <!-- 游戏模式 -->
+        <div class="hidden" id="gameMode">
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fa fa-gamepad"></i>
+                    <h4>游戏攻略</h4>
+                    <p>获取游戏技巧</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa fa-users"></i>
+                    <h4>多人游戏</h4>
+                    <p>寻找游戏伙伴</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa fa-trophy"></i>
+                    <h4>成就系统</h4>
+                    <p>查看游戏成就</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa fa-question-circle"></i>
+                    <h4>游戏问答</h4>
+                    <p>解答游戏问题</p>
+                </div>
+            </div>
+            
+            <div class="ai-input-group mt-3">
+                <input type="text" class="ai-input" id="gameInput" placeholder="询问游戏相关问题...">
+                <button class="ai-send-btn" id="gameBtn">
+                    <i class="fa fa-gamepad"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 工具面板 -->
+    <div class="function-panel glass-effect" id="toolsPanel">
+        <div class="panel-header">
+            <h3 class="panel-title">KZADJ AI工具集</h3>
+            <button class="close-panel" id="closeTools">×</button>
+        </div>
+        
+        <div class="feature-grid">
+            <div class="feature-card" data-tool="calculator">
+                <i class="fa fa-calculator"></i>
+                <h4>智能计算器</h4>
+                <p>高级数学计算</p>
+            </div>
+            <div class="feature-card" data-tool="notes">
+                <i class="fa fa-sticky-note"></i>
+                <h4>智能笔记</h4>
+                <p>记录重要信息</p>
+            </div>
+            <div class="feature-card" data-tool="converter">
+                <i class="fa fa-exchange"></i>
+                <h4>单位转换</h4>
+                <p>各种单位转换</p>
+            </div>
+            <div class="feature-card" data-tool="translator">
+                <i class="fa fa-language"></i>
+                <h4>多语言翻译</h4>
+                <p>快速翻译文本</p>
+            </div>
+            <div class="feature-card" data-tool="weather">
+                <i class="fa fa-cloud"></i>
+                <h4>天气预报</h4>
+                <p>查看天气信息</p>
+            </div>
+            <div class="feature-card" data-tool="qrcode">
+                <i class="fa fa-qrcode"></i>
+                <h4>二维码生成</h4>
+                <p>生成QR二维码</p>
+            </div>
+        </div>
+        
+        <div class="learning-assistant mt-4">
+            <h4 class="font-semibold mb-2">学习助手</h4>
+            <div class="learning-topic">
+                <h5>英语学习</h5>
+                <p>每日单词推荐: 10个新单词</p>
+            </div>
+            <div class="learning-topic">
+                <h5>编程学习</h5>
+                <p>Python小技巧: 列表推导式</p>
+            </div>
+            <div class="learning-topic">
+                <h5>专业知识</h5>
+                <p>根据您的兴趣推荐学习内容</p>
+            </div>
+        </div>
+        
+        <div class="travel-planner mt-4">
+            <h4 class="font-semibold mb-2">旅行规划</h4>
+            <div class="destination-card">
+                <h5>推荐目的地</h5>
+                <p>云南丽江 - 古城区探索</p>
+            </div>
+            <div class="destination-card">
+                <h5>本周特价</h5>
+                <p>厦门鼓浪屿 - 海岛度假</p>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <button class="save-notes bg-info w-full" id="aiLearningPlan">生成学习计划</button>
+            <button class="save-notes bg-warning w-full mt-2" id="aiTravelPlan">生成旅行计划</button>
+        </div>
+    </div>
+
+    <!-- 引用外部JS文件 -->
+    <script src="6.js"></script>
+</body>
+<!-- 锁屏系统 - 完全隔离版 (粘贴到导航网站HTML最前面) -->
+<style>
+    /* 锁屏系统专属样式 - 所有类名带locksys前缀，避免冲突 */
+    .locksys-* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+    }
+
+    .locksys-body-helper {
+        background: transparent !important;
+        min-height: auto !important;
+    }
+
+    /* 主按钮 */
+    #locksys-single-btn {
+        position: fixed;
+        z-index: 99999999;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #fff;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        top: 20px;
+        right: 20px;
+        transition: transform 0.2s;
+        pointer-events: auto;
+    }
+
+    #locksys-single-btn:active {
+        transform: scale(0.95);
+    }
+
+    /* 锁屏遮罩 */
+    #locksys-mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 99999997;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        pointer-events: auto;
+    }
+
+    #locksys-unlock-tip-mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 99999998;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        pointer-events: auto;
+    }
+
+    /* 面板 */
+    .locksys-panel {
+        width: 100%;
+        max-width: 380px;
+        background: #1c1c1e;
+        border-radius: 20px;
+        padding: 30px;
+        color: #fff;
+        text-align: center;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .locksys-unlock-tip-panel {
+        width: 100%;
+        max-width: 320px;
+        background: #2c2c2e;
+        border-radius: 16px;
+        padding: 25px;
+        color: #fff;
+        text-align: center;
+    }
+
+    .locksys-hide {
+        display: none !important;
+    }
+
+    .locksys-h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .locksys-user-id-box {
+        margin: 15px 0;
+        padding: 12px;
+        background: rgba(102, 126, 234, 0.2);
+        border-radius: 12px;
+        color: #667eea;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .locksys-user-id-tip {
+        font-size: 13px;
+        color: #8e8e93;
+        margin-bottom: 20px;
+    }
+
+    /* 按钮 */
+    .locksys-btn {
+        width: 100%;
+        height: 50px;
+        background: #3a3a3c;
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        margin-top: 12px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .locksys-btn:active {
+        transform: scale(0.98);
+    }
+
+    .locksys-btn.locksys-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .locksys-btn-group {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .locksys-btn-group button {
+        flex: 1;
+        height: 45px;
+        border: none;
+        border-radius: 10px;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .locksys-btn-group button:active {
+        transform: scale(0.98);
+    }
+
+    .locksys-confirm-btn {
+        background: #34c759;
+        color: #fff;
+    }
+
+    .locksys-cancel-btn {
+        background: #3a3a3c;
+        color: #fff;
+    }
+
+    /* 数字键盘 */
+    .locksys-keyboard {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin: 25px auto;
+        max-width: 280px;
+    }
+
+    .locksys-key {
+        height: 70px;
+        background: #3a3a3c;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        transition: all 0.15s;
+    }
+
+    .locksys-key:active {
+        background: #667eea;
+        transform: scale(0.95);
+    }
+
+    .locksys-key.locksys-key-del {
+        background: #ff3b30;
+        font-size: 14px;
+    }
+
+    /* 密码圆点 */
+    .locksys-dots {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin: 30px 0;
+    }
+
+    .locksys-dot {
+        width: 14px;
+        height: 14px;
+        border: 2px solid #48484a;
+        border-radius: 50%;
+        transition: all 0.2s;
+    }
+
+    .locksys-dot.locksys-active {
+        background: #667eea;
+        border-color: #667eea;
+        transform: scale(1.2);
+    }
+
+    .locksys-dot.locksys-error {
+        background: #ff3b30;
+        border-color: #ff3b30;
+        animation: locksys-shake 0.4s;
+    }
+
+    @keyframes locksys-shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+    }
+
+    /* 输入框 */
+    .locksys-input {
+        width: 100%;
+        height: 50px;
+        background: #3a3a3c;
+        border: 1px solid transparent;
+        border-radius: 12px;
+        color: #fff;
+        font-size: 18px;
+        text-align: center;
+        letter-spacing: 10px;
+        margin: 15px 0;
+    }
+
+    .locksys-input:focus {
+        outline: none;
+        border-color: #667eea;
+    }
+
+    /* 提示 */
+    .locksys-tip {
+        min-height: 20px;
+        color: #ff3b30;
+        font-size: 13px;
+        margin: 10px 0;
+    }
+
+    .locksys-tip.locksys-success {
+        color: #34c759;
+    }
+
+    /* 选项 */
+    .locksys-options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 20px 0;
+    }
+
+    .locksys-option {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        background: #3a3a3c;
+        border-radius: 14px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .locksys-option:active {
+        background: #48484a;
+        transform: scale(0.98);
+    }
+
+    .locksys-option-icon {
+        font-size: 28px;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 12px;
+    }
+
+    .locksys-option-text {
+        flex: 1;
+        text-align: left;
+    }
+
+    .locksys-option-title {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .locksys-option-desc {
+        font-size: 12px;
+        color: #8e8e93;
+    }
+
+    .locksys-options-unlock {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-top: 15px;
+    }
+
+    .locksys-option-btn {
+        height: 40px;
+        background: #3a3a3c;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .locksys-option-btn:active {
+        background: #48484a;
+    }
+
+    /* 图案 */
+    .locksys-pattern-container {
+        position: relative;
+        width: 280px;
+        height: 280px;
+        margin: 20px auto;
+        background: #2c2c2e;
+        border-radius: 16px;
+        touch-action: none;
+    }
+
+    .locksys-pattern-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        touch-action: none;
+    }
+
+    .locksys-pattern-dots {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        padding: 35px;
+        z-index: 1;
+    }
+
+    .locksys-pattern-dot {
+        width: 16px;
+        height: 16px;
+        background: #48484a;
+        border-radius: 50%;
+        margin: auto;
+        transition: all 0.2s;
+    }
+
+    .locksys-pattern-dot.locksys-active {
+        background: #667eea;
+        transform: scale(1.3);
+        box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+    }
+
+    /* 响应式 */
+    @media (max-width: 400px) {
+        .locksys-panel {
+            padding: 20px;
+        }
+        .locksys-pattern-container {
+            width: 260px;
+            height: 260px;
+        }
+    }
+</style>
+
+<!-- 锁屏系统HTML结构 -->
+<button id="locksys-single-btn" title="锁屏">🔒</button>
+
+<!-- 提示弹窗 -->
+<div id="locksys-unlock-tip-mask">
+    <div class="locksys-unlock-tip-panel">
+        <h3 class="locksys-h3">✓ 解锁成功</h3>
+        <p style="color:#8e8e93;margin:15px 0;font-size:14px;">是否关闭锁屏？</p>
+        <div class="locksys-btn-group">
+            <button class="locksys-cancel-btn" onclick="locksys.hideTipMask()">保持锁屏</button>
+            <button class="locksys-confirm-btn" onclick="locksys.closeLock()">关闭锁屏</button>
+        </div>
+    </div>
+</div>
+
+<!-- 锁屏面板 -->
+<div id="locksys-mask">
+    <!-- 1. 联系面板 -->
+    <div class="locksys-panel locksys-hide" id="locksys-contact-panel">
+        <h3 class="locksys-h3">⚠️ 密码错误过多</h3>
+        <p style="color:#8e8e93;font-size:13px;">请联系开发者获取解锁密码</p>
+        <div class="locksys-user-id-box" id="locksys-contact-user-id">ID：000</div>
+        <button class="locksys-btn locksys-primary" onclick="locksys.showPanel('locksys-id-pwd-panel')">前往解锁</button>
+    </div>
+
+    <!-- 2. ID解锁 -->
+    <div class="locksys-panel locksys-hide" id="locksys-id-pwd-panel">
+        <h3 class="locksys-h3">🔑 开发者解锁</h3>
+        <p class="locksys-user-id-tip">ID：<span id="locksys-unlock-user-id" style="color:#667eea;">000</span></p>
+        <input type="password" class="locksys-input" id="locksys-unlock-pwd" placeholder="0000" maxlength="4" inputmode="numeric">
+        <div class="locksys-tip" id="locksys-id-tip"></div>
+        <button class="locksys-btn locksys-primary" onclick="locksys.verifyDeveloperPwd()">验证</button>
+        <button class="locksys-btn" onclick="locksys.showPanel('locksys-contact-panel')" style="margin-top:8px;">返回</button>
+    </div>
+
+    <!-- 3. 选择方式 -->
+    <div class="locksys-panel locksys-hide" id="locksys-lock-type-panel">
+        <h3 class="locksys-h3">🔐 选择锁屏方式</h3>
+        <p class="locksys-user-id-tip">ID：<span id="locksys-type-user-id" style="color:#667eea;">000</span></p>
+        <div class="locksys-options">
+            <div class="locksys-option" onclick="locksys.selectType('number')">
+                <div class="locksys-option-icon">🔢</div>
+                <div class="locksys-option-text">
+                    <div class="locksys-option-title">数字密码</div>
+                    <div class="locksys-option-desc">4位数字密码</div>
+                </div>
+            </div>
+            <div class="locksys-option" onclick="locksys.selectType('pattern')">
+                <div class="locksys-option-icon">🔷</div>
+                <div class="locksys-option-text">
+                    <div class="locksys-option-title">图案密码</div>
+                    <div class="locksys-option-desc">连接至少4个点</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. 数字密码主面板 -->
+    <div class="locksys-panel locksys-hide" id="locksys-main-panel">
+        <!-- 设置密码 -->
+        <div id="locksys-set-panel">
+            <h3 class="locksys-h3">🔢 设置数字密码</h3>
+            <p class="locksys-user-id-tip">ID：<span id="locksys-set-user-id" style="color:#667eea;">000</span></p>
+            <div class="locksys-dots" id="locksys-set-dots">
+                <div class="locksys-dot"></div>
+                <div class="locksys-dot"></div>
+                <div class="locksys-dot"></div>
+                <div class="locksys-dot"></div>
+            </div>
+            <div class="locksys-keyboard" id="locksys-set-keyboard">
+                <button class="locksys-key" onclick="locksys.inputNum(1)">1</button>
+                <button class="locksys-key" onclick="locksys.inputNum(2)">2</button>
+                <button class="locksys-key" onclick="locksys.inputNum(3)">3</button>
+                <button class="locksys-key" onclick="locksys.inputNum(4)">4</button>
+                <button class="locksys-key" onclick="locksys.inputNum(5)">5</button>
+                <button class="locksys-key" onclick="locksys.inputNum(6)">6</button>
+                <button class="locksys-key" onclick="locksys.inputNum(7)">7</button>
+                <button class="locksys-key" onclick="locksys.inputNum(8)">8</button>
+                <button class="locksys-key" onclick="locksys.inputNum(9)">9</button>
+                <button class="locksys-key locksys-key-del" onclick="locksys.deleteNum()">删除</button>
+                <button class="locksys-key" onclick="locksys.inputNum(0)">0</button>
+                <button class="locksys-key" onclick="locksys.hideMask()" style="font-size:13px;">取消</button>
+            </div>
+            <div class="locksys-tip" id="locksys-set-tip"></div>
+        </div>
+
+        <!-- 解锁面板 -->
+        <div id="locksys-unlock-panel" class="locksys-hide">
+            <h3 class="locksys-h3">🔒 已锁屏</h3>
+            <p class="locksys-user-id-tip">ID：<span id="locksys-unlock-main-id" style="color:#667eea;">000</span></p>
+            <div class="locksys-dots" id="locksys-unlock-dots">
+                <div class="locksys-dot"></div>
+                <div class="locksys-dot"></div>
+                <div class="locksys-dot"></div>
+                <div class="locksys-dot"></div>
+            </div>
+            <div class="locksys-keyboard" id="locksys-unlock-keyboard">
+                <button class="locksys-key" onclick="locksys.inputNum(1)">1</button>
+                <button class="locksys-key" onclick="locksys.inputNum(2)">2</button>
+                <button class="locksys-key" onclick="locksys.inputNum(3)">3</button>
+                <button class="locksys-key" onclick="locksys.inputNum(4)">4</button>
+                <button class="locksys-key" onclick="locksys.inputNum(5)">5</button>
+                <button class="locksys-key" onclick="locksys.inputNum(6)">6</button>
+                <button class="locksys-key" onclick="locksys.inputNum(7)">7</button>
+                <button class="locksys-key" onclick="locksys.inputNum(8)">8</button>
+                <button class="locksys-key" onclick="locksys.inputNum(9)">9</button>
+                <button class="locksys-key locksys-key-del" onclick="locksys.deleteNum()">删除</button>
+                <button class="locksys-key" onclick="locksys.inputNum(0)">0</button>
+                <button class="locksys-key" onclick="locksys.showPanel('locksys-contact-panel')" style="font-size:13px;">找回</button>
+            </div>
+            <div class="locksys-tip" id="locksys-unlock-tip"></div>
+            <div class="locksys-options-unlock">
+                <button class="locksys-option-btn" onclick="locksys.showPanel('locksys-pattern-unlock-panel')">图案解锁</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. 图案设置 -->
+    <div class="locksys-panel locksys-hide" id="locksys-pattern-set-panel">
+        <h3 class="locksys-h3">🔷 设置图案密码</h3>
+        <p style="color:#8e8e93;font-size:13px;">至少连接4个点</p>
+        <div class="locksys-pattern-container" id="locksys-pattern-set-container">
+            <canvas class="locksys-pattern-canvas" id="locksys-pattern-canvas-set" width="280" height="280"></canvas>
+            <div class="locksys-pattern-dots">
+                <div class="locksys-pattern-dot" data-id="1"></div>
+                <div class="locksys-pattern-dot" data-id="2"></div>
+                <div class="locksys-pattern-dot" data-id="3"></div>
+                <div class="locksys-pattern-dot" data-id="4"></div>
+                <div class="locksys-pattern-dot" data-id="5"></div>
+                <div class="locksys-pattern-dot" data-id="6"></div>
+                <div class="locksys-pattern-dot" data-id="7"></div>
+                <div class="locksys-pattern-dot" data-id="8"></div>
+                <div class="locksys-pattern-dot" data-id="9"></div>
+            </div>
+        </div>
+        <div class="locksys-tip" id="locksys-pattern-set-tip"></div>
+        <div class="locksys-btn-group">
+            <button class="locksys-cancel-btn" onclick="locksys.clearPattern()">清除</button>
+            <button class="locksys-confirm-btn" onclick="locksys.confirmPattern()">确认</button>
+        </div>
+        <button class="locksys-btn" onclick="locksys.showPanel('locksys-lock-type-panel')" style="margin-top:10px;">返回</button>
+    </div>
+
+    <!-- 6. 图案解锁 -->
+    <div class="locksys-panel locksys-hide" id="locksys-pattern-unlock-panel">
+        <h3 class="locksys-h3">🔷 图案解锁</h3>
+        <div class="locksys-pattern-container" id="locksys-pattern-unlock-container">
+            <canvas class="locksys-pattern-canvas" id="locksys-pattern-canvas-unlock" width="280" height="280"></canvas>
+            <div class="locksys-pattern-dots">
+                <div class="locksys-pattern-dot" data-id="1"></div>
+                <div class="locksys-pattern-dot" data-id="2"></div>
+                <div class="locksys-pattern-dot" data-id="3"></div>
+                <div class="locksys-pattern-dot" data-id="4"></div>
+                <div class="locksys-pattern-dot" data-id="5"></div>
+                <div class="locksys-pattern-dot" data-id="6"></div>
+                <div class="locksys-pattern-dot" data-id="7"></div>
+                <div class="locksys-pattern-dot" data-id="8"></div>
+                <div class="locksys-pattern-dot" data-id="9"></div>
+            </div>
+        </div>
+        <div class="locksys-tip" id="locksys-pattern-unlock-tip"></div>
+        <div class="locksys-btn-group">
+            <button class="locksys-cancel-btn" onclick="locksys.clearPattern()">清除</button>
+            <button class="locksys-cancel-btn" onclick="locksys.backToUnlock()">返回</button>
+        </div>
+        <button class="locksys-btn" onclick="locksys.showPanel('locksys-contact-panel')" style="margin-top:10px;">忘记图案</button>
+    </div>
+</div>
+
+<script>
+// 锁屏系统核心逻辑 - 封装到locksys命名空间，避免全局冲突
+const locksys = (function() {
+    // ================= 配置 =================
+    const CONFIG = {
+        pwdKey: 'locksys_pwd_v4',
+        userIdKey: 'locksys_user_v4',
+        lockStatusKey: 'locksys_status_v4',
+        lockTypeKey: 'locksys_type_v4',
+        patternKey: 'locksys_pattern_v4',
+        maxError: 5,
+        idPwdPairs: [
+            {id:'001',pwd:'1111'},{id:'002',pwd:'2222'},
+            {id:'003',pwd:'3333'},{id:'004',pwd:'4444'},
+            {id:'005',pwd:'5555'},{id:'006',pwd:'6666'},
+            {id:'007',pwd:'7777'},{id:'008',pwd:'8888'},
+            {id:'009',pwd:'9999'},{id:'010',pwd:'0000'}
+        ]
+    };
+
+    // ================= 状态 =================
+    let userId = '';
+    let lockStatus = true;
+    let lockType = 'number';
+    let currentPwd = [];
+    let errorTimes = 0;
+    let patternPath = [];
+    let isDrawing = false;
+    let patternCtx = null;
+    let patternDots = [];
+    let audioCtx = null;
+
+    // ================= 音频 =================
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+    }
+
+    function beep(freq, duration, type='sine') {
+        initAudio();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        
+        osc.frequency.value = freq;
+        osc.type = type;
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playSuccess() { 
+        beep(523,0.1); 
+        setTimeout(()=>beep(659,0.15),100); 
+        setTimeout(()=>beep(784,0.3),250); 
+    }
+    
+    function playError() { 
+        beep(200,0.2,'sawtooth'); 
+        setTimeout(()=>beep(150,0.2,'sawtooth'),100);
+    }
+    
+    function playClick() { beep(600,0.05); }
+
+    // ================= 初始化 =================
+    function init() {
+        console.log('锁屏系统初始化');
+        
+        // 读取状态
+        const savedStatus = localStorage.getItem(CONFIG.lockStatusKey);
+        lockStatus = savedStatus === null ? true : (savedStatus === 'true');
+        
+        userId = localStorage.getItem(CONFIG.userIdKey);
+        if (!userId) {
+            userId = CONFIG.idPwdPairs[Math.floor(Math.random()*10)].id;
+            localStorage.setItem(CONFIG.userIdKey, userId);
+        }
+        
+        lockType = localStorage.getItem(CONFIG.lockTypeKey) || 'number';
+        
+        // 更新显示
+        updateUserId();
+        updateBtn();
+        
+        // 绑定主按钮
+        document.getElementById('locksys-single-btn').onclick = function(e) {
+            e.stopPropagation();
+            playClick();
+            handleMainClick();
+        };
+        
+        // 自动锁屏检查
+        if (lockStatus) {
+            setTimeout(checkAutoLock, 500);
+        }
+    }
+
+    function updateUserId() {
+        document.getElementById('locksys-contact-user-id').textContent = 'ID：' + userId;
+        document.getElementById('locksys-unlock-user-id').textContent = userId;
+        document.getElementById('locksys-type-user-id').textContent = userId;
+        document.getElementById('locksys-set-user-id').textContent = userId;
+        document.getElementById('locksys-unlock-main-id').textContent = userId;
+    }
+
+    function updateBtn() {
+        const btn = document.getElementById('locksys-single-btn');
+        btn.innerHTML = lockStatus ? '🔒' : '🔓';
+        btn.title = lockStatus ? '点击锁屏' : '点击开启锁屏';
+    }
+
+    function checkAutoLock() {
+        const hasPwd = localStorage.getItem(CONFIG.pwdKey);
+        const hasPattern = localStorage.getItem(CONFIG.patternKey);
+        
+        if (hasPwd || hasPattern) {
+            showLockByType();
+        }
+    }
+
+    function handleMainClick() {
+        if (lockStatus) {
+            const hasPwd = localStorage.getItem(CONFIG.pwdKey);
+            const hasPattern = localStorage.getItem(CONFIG.patternKey);
+            
+            if (hasPwd || hasPattern) {
+                showLockByType();
+            } else {
+                showPanel('locksys-lock-type-panel');
+            }
+        } else {
+            openLock();
+        }
+    }
+
+    function showLockByType() {
+        switch(lockType) {
+            case 'pattern': 
+                showPanel('locksys-pattern-unlock-panel'); 
+                break;
+            default: 
+                showPanel('locksys-main-panel');
+                showSubPanel('locksys-unlock-panel');
+        }
+    }
+
+    // ================= 面板控制 =================
+    function showPanel(panelId) {
+        console.log('显示面板:', panelId);
+        
+        // 隐藏所有面板
+        const panels = document.querySelectorAll('.locksys-panel');
+        panels.forEach(p => p.classList.add('locksys-hide'));
+        
+        // 显示目标面板
+        const target = document.getElementById(panelId);
+        if (target) {
+            target.classList.remove('locksys-hide');
+        }
+        
+        // 显示遮罩
+        document.getElementById('locksys-mask').style.display = 'flex';
+        
+        // 重置状态
+        currentPwd = [];
+        updateDots();
+        
+        // 初始化特定面板
+        if (panelId === 'locksys-pattern-set-panel') {
+            setTimeout(() => initPattern('set'), 50);
+        } else if (panelId === 'locksys-pattern-unlock-panel') {
+            setTimeout(() => initPattern('unlock'), 50);
+        }
+    }
+
+    function showSubPanel(subId) {
+        // 隐藏main-panel下的所有子面板
+        const subs = document.querySelectorAll('#locksys-main-panel > div');
+        subs.forEach(s => s.classList.add('locksys-hide'));
+        
+        // 显示指定的
+        const target = document.getElementById(subId);
+        if (target) {
+            target.classList.remove('locksys-hide');
+        }
+    }
+
+    function backToUnlock() {
+        showPanel('locksys-main-panel');
+        showSubPanel('locksys-unlock-panel');
+    }
+
+    function hideMask() {
+        document.getElementById('locksys-mask').style.display = 'none';
+        currentPwd = [];
+        patternPath = [];
+        updateDots();
+    }
+
+    function showTipMask() {
+        document.getElementById('locksys-unlock-tip-mask').style.display = 'flex';
+    }
+
+    function hideTipMask() {
+        document.getElementById('locksys-unlock-tip-mask').style.display = 'none';
+    }
+
+    // ================= 数字密码 =================
+    function inputNum(n) {
+        playClick();
+        
+        if (currentPwd.length < 4) {
+            currentPwd.push(n);
+            updateDots();
+            
+            if (currentPwd.length === 4) {
+                setTimeout(() => verifyNumPwd(), 150);
+            }
+        }
+    }
+
+    function deleteNum() {
+        playClick();
+        if (currentPwd.length > 0) {
+            currentPwd.pop();
+            updateDots();
+            clearTips();
+        }
+    }
+
+    function updateDots() {
+        // 确定当前是哪个面板
+        const setPanel = document.getElementById('locksys-set-panel');
+        const isSet = !setPanel.classList.contains('locksys-hide') && 
+                     setPanel.parentElement.style.display !== 'none';
+        
+        const dotsId = isSet ? 'locksys-set-dots' : 'locksys-unlock-dots';
+        const dots = document.getElementById(dotsId).querySelectorAll('.locksys-dot');
+        
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('locksys-active', i < currentPwd.length);
+            dot.classList.remove('locksys-error');
+        });
+    }
+
+    function clearTips() {
+        document.getElementById('locksys-set-tip').textContent = '';
+        document.getElementById('locksys-unlock-tip').textContent = '';
+    }
+
+    function verifyNumPwd() {
+        const setPanel = document.getElementById('locksys-set-panel');
+        const isSet = !setPanel.classList.contains('locksys-hide');
+        
+        const input = currentPwd.join('');
+        
+        if (isSet) {
+            // 设置模式
+            localStorage.setItem(CONFIG.pwdKey, input);
+            localStorage.setItem(CONFIG.lockTypeKey, 'number');
+            lockType = 'number';
+            
+            document.getElementById('locksys-set-tip').textContent = '✓ 设置成功';
+            document.getElementById('locksys-set-tip').className = 'locksys-tip locksys-success';
+            playSuccess();
+            
+            setTimeout(() => {
+                currentPwd = [];
+                showPanel('locksys-main-panel');
+                showSubPanel('locksys-unlock-panel');
+            }, 1200);
+            
+        } else {
+            // 解锁模式
+            const saved = localStorage.getItem(CONFIG.pwdKey);
+            
+            if (input === saved) {
+                playSuccess();
+                hideMask();
+                showTipMask();
+                errorTimes = 0;
+            } else {
+                errorTimes++;
+                playError();
+                
+                // 显示错误动画
+                const dots = document.getElementById('locksys-unlock-dots').querySelectorAll('.locksys-dot');
+                dots.forEach(d => {
+                    if (d.classList.contains('locksys-active')) d.classList.add('locksys-error');
+                });
+                
+                document.getElementById('locksys-unlock-tip').textContent = 
+                    `密码错误，还剩${CONFIG.maxError - errorTimes}次`;
+                
+                setTimeout(() => {
+                    currentPwd = [];
+                    updateDots();
+                    
+                    if (errorTimes >= CONFIG.maxError) {
+                        errorTimes = 0;
+                        showPanel('locksys-contact-panel');
+                    }
+                }, 600);
+            }
+        }
+    }
+
+    // ================= 图案密码 =================
+    function initPattern(mode) {
+        const canvasId = mode === 'set' ? 'locksys-pattern-canvas-set' : 'locksys-pattern-canvas-unlock';
+        const containerId = mode === 'set' ? 'locksys-pattern-set-container' : 'locksys-pattern-unlock-container';
+        
+        const canvas = document.getElementById(canvasId);
+        const container = document.getElementById(containerId);
+        
+        if (!canvas || !container) return;
+        
+        // 设置canvas尺寸
+        const rect = container.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        
+        patternCtx = canvas.getContext('2d');
+        patternCtx.lineWidth = 4;
+        patternCtx.lineCap = 'round';
+        patternCtx.lineJoin = 'round';
+        
+        // 计算圆点位置
+        const dotElems = container.querySelectorAll('.locksys-pattern-dot');
+        patternDots = [];
+        
+        dotElems.forEach((dot, index) => {
+            const dotRect = dot.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
+            patternDots.push({
+                id: (index + 1).toString(),
+                x: dotRect.left - containerRect.left + dotRect.width / 2,
+                y: dotRect.top - containerRect.top + dotRect.height / 2,
+                el: dot
+            });
+        });
+        
+        // 绑定事件
+        canvas.onmousedown = startPattern;
+        canvas.ontouchstart = startPattern;
+        
+        canvas.onmousemove = movePattern;
+        canvas.ontouchmove = movePattern;
+        
+        canvas.onmouseup = endPattern;
+        canvas.onmouseleave = endPattern;
+        canvas.ontouchend = endPattern;
+    }
+
+    function getPatternPos(e) {
+        const canvas = patternCtx.canvas;
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+            x: clientX - rect.left,
+            y: clientY - rect.top
+        };
+    }
+
+    function startPattern(e) {
+        e.preventDefault();
+        isDrawing = true;
+        patternPath = [];
+        checkPatternDot(getPatternPos(e));
+    }
+
+    function movePattern(e) {
+        if (!isDrawing) return;
+        e.preventDefault();
+        
+        const pos = getPatternPos(e);
+        
+        // 重绘所有线
+        redrawPattern();
+        
+        // 画跟随线
+        if (patternPath.length > 0) {
+            const lastDot = patternDots.find(d => d.id === patternPath[patternPath.length - 1]);
+            if (lastDot) {
+                patternCtx.beginPath();
+                patternCtx.moveTo(lastDot.x, lastDot.y);
+                patternCtx.lineTo(pos.x, pos.y);
+                patternCtx.strokeStyle = 'rgba(102, 126, 234, 0.4)';
+                patternCtx.stroke();
+            }
+        }
+        
+        checkPatternDot(pos);
+    }
+
+    function checkPatternDot(pos) {
+        for (let dot of patternDots) {
+            const dist = Math.sqrt(Math.pow(dot.x - pos.x, 2) + Math.pow(dot.y - pos.y, 2));
+            
+            if (dist < 35 && !patternPath.includes(dot.id)) {
+                patternPath.push(dot.id);
+                dot.el.classList.add('locksys-active');
+                playClick();
+                redrawPattern();
+                
+                // 更新提示
+                const isSet = document.getElementById('locksys-pattern-set-panel').classList.contains('locksys-hide') === false;
+                if (isSet) {
+                    document.getElementById('locksys-pattern-set-tip').textContent = `已连接 ${patternPath.length} 个点`;
+                }
+                break;
+            }
+        }
+    }
+
+    function redrawPattern() {
+        if (!patternCtx) return;
+        
+        const canvas = patternCtx.canvas;
+        patternCtx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        if (patternPath.length < 2) return;
+        
+        patternCtx.beginPath();
+        patternCtx.strokeStyle = '#667eea';
+        patternCtx.lineWidth = 4;
+        
+        for (let i = 0; i < patternPath.length; i++) {
+            const dot = patternDots.find(d => d.id === patternPath[i]);
+            if (dot) {
+                if (i === 0) {
+                    patternCtx.moveTo(dot.x, dot.y);
+                } else {
+                    patternCtx.lineTo(dot.x, dot.y);
+                }
+            }
+        }
+        patternCtx.stroke();
+    }
+
+    function endPattern(e) {
+        if (!isDrawing) return;
+        isDrawing = false;
+        
+        redrawPattern();
+        
+        const isSet = document.getElementById('locksys-pattern-set-panel').classList.contains('locksys-hide') === false;
+        
+        if (isSet) {
+            // 设置模式 - 检查点数
+            if (patternPath.length < 4) {
+                document.getElementById('locksys-pattern-set-tip').textContent = '请至少连接4个点';
+                document.getElementById('locksys-pattern-set-tip').className = 'locksys-tip';
+                playError();
+                setTimeout(clearPattern, 800);
+            }
+            // 等待用户点击确认
+        } else {
+            // 解锁模式 - 自动验证
+            verifyPattern();
+        }
+    }
+
+    function clearPattern() {
+        patternPath = [];
+        if (patternCtx) {
+            const canvas = patternCtx.canvas;
+            patternCtx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+        document.querySelectorAll('.locksys-pattern-dot').forEach(d => d.classList.remove('locksys-active'));
+        document.getElementById('locksys-pattern-set-tip').textContent = '';
+        document.getElementById('locksys-pattern-unlock-tip').textContent = '';
+    }
+
+    function confirmPattern() {
+        if (patternPath.length < 4) {
+            document.getElementById('locksys-pattern-set-tip').textContent = '请至少连接4个点';
+            playError();
+            return;
+        }
+        
+        localStorage.setItem(CONFIG.patternKey, patternPath.join(','));
+        localStorage.setItem(CONFIG.lockTypeKey, 'pattern');
+        lockType = 'pattern';
+        
+        document.getElementById('locksys-pattern-set-tip').textContent = '✓ 设置成功';
+        document.getElementById('locksys-pattern-set-tip').className = 'locksys-tip locksys-success';
+        playSuccess();
+        
+        setTimeout(() => {
+            clearPattern();
+            showPanel('locksys-pattern-unlock-panel');
+        }, 1200);
+    }
+
+    function verifyPattern() {
+        const saved = localStorage.getItem(CONFIG.patternKey);
+        const input = patternPath.join(',');
+        
+        if (!saved) {
+            document.getElementById('locksys-pattern-unlock-tip').textContent = '未设置图案';
+            clearPattern();
+            return;
+        }
+        
+        if (input === saved) {
+            document.getElementById('locksys-pattern-unlock-tip').textContent = '✓ 解锁成功';
+            document.getElementById('locksys-pattern-unlock-tip').className = 'locksys-tip locksys-success';
+            playSuccess();
+            
+            setTimeout(() => {
+                hideMask();
+                showTipMask();
+                errorTimes = 0;
+                clearPattern();
+            }, 600);
+        } else {
+            errorTimes++;
+            playError();
+            document.getElementById('locksys-pattern-unlock-tip').textContent = 
+                `图案错误，还剩${CONFIG.maxError - errorTimes}次`;
+            document.getElementById('locksys-pattern-unlock-tip').className = 'locksys-tip';
+            
+            setTimeout(() => {
+                clearPattern();
+                if (errorTimes >= CONFIG.maxError) {
+                    errorTimes = 0;
+                    showPanel('locksys-contact-panel');
+                }
+            }, 800);
+        }
+    }
+
+    // ================= 其他功能 =================
+    function selectType(type) {
+        playClick();
+        
+        if (type === 'number') {
+            showPanel('locksys-main-panel');
+            showSubPanel('locksys-set-panel');
+        } else if (type === 'pattern') {
+            showPanel('locksys-pattern-set-panel');
+        }
+    }
+
+    function verifyDeveloperPwd() {
+        const input = document.getElementById('locksys-unlock-pwd').value.trim();
+        const tip = document.getElementById('locksys-id-tip');
+        
+        if (input.length !== 4) {
+            tip.textContent = '请输入4位数字';
+            playError();
+            return;
+        }
+        
+        const pair = CONFIG.idPwdPairs.find(p => p.id === userId);
+        
+        if (pair && pair.pwd === input) {
+            tip.textContent = '✓ 验证成功';
+            tip.className = 'locksys-tip locksys-success';
+            playSuccess();
+            
+            // 清除所有密码
+            localStorage.removeItem(CONFIG.pwdKey);
+            localStorage.removeItem(CONFIG.patternKey);
+            localStorage.removeItem(CONFIG.lockTypeKey);
+            lockType = 'number';
+            
+            setTimeout(() => {
+                document.getElementById('locksys-unlock-pwd').value = '';
+                tip.textContent = '';
+                tip.className = 'locksys-tip';
+                showPanel('locksys-lock-type-panel');
+            }, 1500);
+        } else {
+            tip.textContent = '密码错误';
+            playError();
+        }
+    }
+
+    function openLock() {
+        localStorage.setItem(CONFIG.lockStatusKey, 'true');
+        lockStatus = true;
+        updateBtn();
+        
+        const hasPwd = localStorage.getItem(CONFIG.pwdKey);
+        const hasPattern = localStorage.getItem(CONFIG.patternKey);
+        
+        if (hasPwd || hasPattern) {
+            showLockByType();
+        } else {
+            showPanel('locksys-lock-type-panel');
+        }
+    }
+
+    function closeLock() {
+        localStorage.setItem(CONFIG.lockStatusKey, 'false');
+        lockStatus = false;
+        updateBtn();
+        hideTipMask();
+    }
+
+    // 初始化系统
+    window.addEventListener('load', init);
+
+    // 暴露公共方法
+    return {
+        showPanel,
+        showTipMask,
+        hideTipMask,
+        closeLock,
+        inputNum,
+        deleteNum,
+        clearPattern,
+        confirmPattern,
+        backToUnlock,
+        selectType,
+        verifyDeveloperPwd,
+        hideMask,
+        openLock
+    };
+})();
+</script>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7./2css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+   
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🌐智能控制面板2025</title>
+    <meta name="keywords" content="智能导航, 控制面板, 资源聚合">
+    <meta name="description" content="多功能智能控制面板">
+    <link rel='stylesheet' id='bootstrap-css' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css' type='text/css' media='all'>
+    <link rel="stylesheet" href="1.css">
+</head>
+<body class="user-bookmark-body bookmark-default">
+<!-- 梅干阿牛动态背景容器 -->
+<div id="dynamic-bg-container"></div>
+
+<!-- Mega New Door 框架容器 -->
+<div id="mega-new-door-frame" class="mega-new-door-frame"></div>
+
+<div id="loading">
+    <div id="preloader_3"></div>
+</div>
+<div class="page-container">
+    <div class="bookmark-bg">
+        <div class="img-bg bg" id="img-bg"></div>
+        <div class="gradient-linear"></div>
+    </div>
+    
+    <!-- 原有搜索模块 -->
+    <header class="navbar navbar-dark fixed-top">
+        <div class="weather">
+            <div id="he-plugin-simple" style="display: contents;"></div>
+        </div>
+    </header>
+    <div class="header-big mb-4">
+        <div class="s-search">
+            <!-- 原有搜索表单结构 -->
+        </div>
+    </div>
+
+    <!-- 新增导航网格 -->
+    <div class="nav-grid active">
+        <!-- 原有导航链接 -->
+        <a href="https://www.doubao.com/chat/write?channel=bing_sem&source=dbweb_bing_sem_xhs_cpc_ty_tup_xiez_qcj_hexin_006&keywordid=77447333593244&msclkid=eacb62103bb916554b7f0afa1467bdb0" class="nav-item">
+        <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+        <div class="item-image"></div>
+        豆包
+    </a>
+        <a href="https://chat.deepseek.com/" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            DeepSeek
+        </a>
+        <a href="https://chat.baidu.com/search?extParams=%7B%22enter_type%22%3A%22home_operate%22%7D&isShowHello=1" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            百度
+        </a>
+        <a href="https://aisearch.qq.com/?jump_from=01_14_1" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            QQ模型
+        </a>
+        <a href="https://www.github.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            GitHub
+        </a>
+        <a href="https://www.stackoverflow.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            Stack Overflow
+        </a>
+        <a href="https://www.csdn.net" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            CSDN
+        </a>
+        <a href="https://www.jianshu.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            简书
+        </a>
+        <a href="https://www.douban.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            豆瓣
+        </a>
+        <a href="https://www.zhihu.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            知乎
+        </a>
+        <a href="https://www.weibo.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            微博
+        </a>
+        <a href="https://www.tmall.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            天猫
+        </a>
+        <a href="https://www.jd.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            京东
+        </a>
+        <a href="https://www.taobao.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            淘宝
+        </a>
+        <a href="https://www.pinduoduo.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            拼多多
+        </a>
+        <a href="https://www.douyin.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            抖音
+        </a>
+        <a href="https://www.bilibili.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            哔哩哔哩
+        </a>
+        <a href="https://www.youku.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            优酷
+        </a>
+        <a href="https://www.iqiyi.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            爱奇艺
+        </a>
+        <a href="https://www.tencentvideo.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            腾讯视频
+        </a>
+        <a href="https://www.migu.cn" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            咪咕音乐
+        </a>
+        <a href="https://www.neteasecloudmusic.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            网易云音乐
+        </a>
+        <a href="https://www.qqmusic.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            QQ音乐
+        </a>
+        <a href="https://www.xiami.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            虾米音乐
+        </a>
+        <a href="https://www.acfun.cn" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            A站
+        </a>
+        <a href="https://www.douyu.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            斗鱼
+        </a>
+        <a href="https://www.huya.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            虎牙
+        </a>
+        <a href="https://www.steamchina.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            Steam中国
+        </a>
+        <a href="https://www.epicgames.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            Epic Games
+        </a>
+        <a href="https://www.wegame.com.cn" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            WeGame
+        </a>
+        <a href="https://www.microsoft.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            微软
+        </a>
+        <a href="https://www.apple.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            苹果
+        </a>
+        <a href="https://www.google.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            谷歌
+        </a>
+        <a href="https://www.amazon.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            亚马逊
+        </a>
+        <a href="https://www.twitter.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            推特
+        </a>
+        <a href="https://www.facebook.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            脸书
+        </a>
+        <a href="https://www.instagram.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            Instagram
+        </a>
+        <a href="https://www.linkedin.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            领英
+        </a>
+        <a href="https://www.yahoo.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            雅虎
+        </a>
+        <a href="https://www.ebay.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            eBay
+        </a>
+        <a href="https://www.wikipedia.org" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            维基百科
+        </a>
+        <a href="https://www.britannica.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            大英百科全书
+        </a>
+        <a href="https://www.nytimes.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            纽约时报
+        </a>
+        <a href="https://www.wsj.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            华尔街日报
+        </a>
+        <a href="https://www.cnn.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            CNN
+        </a>
+        <a href="https://www.bbc.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            BBC
+        </a>
+        <a href="https://www.aljazeera.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            半岛电视台
+        </a>
+        <a href="https://www.nasa.gov" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            NASA
+        </a>
+        <a href="https://www.spacex.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            SpaceX
+        </a>
+        <a href="https://www.tesla.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            特斯拉
+        </a>
+        <a href="https://www.airbnb.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            爱彼迎
+        </a>
+        <a href="https://www.tripadvisor.com" class="nav-item">
+            <div class="edit-icon" onclick="event.stopPropagation(); showButtonSettingsModal(this.parentElement)">✏️</div>
+            <div class="item-image"></div>
+            猫途鹰
+        </a>
+    </div>
+
+    <!-- 原有底部 -->
+    <footer class="main-footer footer-type-1 position-relative text-xs">
+        <!-- 原有底部内容 -->
+    </footer>
+</div>
+
+<!-- 控制栏 -->
+<div class="control-bar">
+    <button class="control-btn" onclick="toggleNav()">☰</button>
+    <button class="control-btn" onclick="toggleDarkMode()">🌓</button>
+    <button class="control-btn" onclick="toggleFullScreen()">🗖</button>
+    <button class="control-btn" onclick="showModal('image-modal')">🖼️</button>
+    <button class="control-btn" onclick="showModal('dynamic-bg-modal')">✨</button> <!-- 梅干阿牛动态背景按钮 -->
+    <button class="control-btn" onclick="showModal('mega-new-door-modal')">🚪</button> <!-- Mega New Door 按钮 -->
+    <button class="control-btn" onclick="showModal('ai-modal')">AI</button>
+    <button class="control-btn" onclick="showModal('game-modal')">🎮</button>
+    <button class="control-btn" onclick="showModal('movie-modal')">🎬</button>
+    <button class="control-btn" onclick="showModal('add-site-modal')">+</button>
+</div>
+
+<!-- 缩放控制 -->
+<div class="zoom-controls">
+    <button class="zoom-btn" onclick="zoomOut()">-</button>
+    <div class="zoom-display" id="zoom-level">100%</div>
+    <button class="zoom-btn" onclick="zoomIn()">+</button>
+</div>
+
+<!-- 隐藏/显示按钮 -->
+<button class="hide-toggle-btn" onclick="toggleUI()">👁️</button>
+
+<!-- AI模态框 -->
+<div id="ai-modal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">AI网站</div>
+            <button class="modal-close" onclick="hideModal('ai-modal')">&times;</button>
+        </div>
+        <div class="modal-links">
+            <a href="https://www.doubao.com/chat/write?channel=bing_sem&source=dbweb_bing_sem_xhs_cpc_ty_tup_xiez_qcj_hexin_006&keywordid=77447333593244&msclkid=eacb62103bb916554b7f0afa1467bdb0" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'ai-modal')">✏️</div>
+                <div class="item-image"></div>
+                豆包
+            </a>
+            <a href="https://xinghuo.xfyun.cn" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'ai-modal')">✏️</div>
+                <div class="item-image"></div>
+                讯飞星火
+            </a>
+            <a href="https://metaso.cn" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'ai-modal')">✏️</div>
+                <div class="item-image"></div>
+                秘塔AI搜索
+            </a>
+            <a href="https://yuanbao.tencent.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'ai-modal')">✏️</div>
+                <div class="item-image"></div>
+                腾讯元宝
+            </a>
+            <a href="https://tongyi.aliyun.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'ai-modal')">✏️</div>
+                <div class="item-image"></div>
+                通义
+            </a>
+            <a href="https://chat.deepseek.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'ai-modal')">✏️</div>
+                <div class="item-image"></div>
+                DeepSeek
+            </a>
+            <a href="https://kimi.moonshot.cn" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'ai-modal')">✏️</div>
+                <div class="item-image"></div>
+                Kimi
+            </a>
+            <a href="https://chat.openai.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'ai-modal')">✏️</div>
+                <div class="item-image"></div>
+                ChatGPT
+            </a>
+            <a href="https://claude.ai" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'ai-modal')">✏️</div>
+                <div class="item-image"></div>
+                Claude
+            </a>
+            <a href="https://gemini.google.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'ai-modal')">✏️</div>
+                <div class="item-image"></div>
+                Gemini
+            </a>
+            <a href="https://chat.baidu.com/search?extParams=%7B%22enter_type%22%3A%22home_operate%22%7D&isShowHello=1" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'ai-modal')">✏️</div>
+                <div class="item-image"></div>
+                百度
+            </a>
+            <a href="https://aisearch.qq.com/?jump_from=01_14_1" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'ai-modal')">✏️</div>
+                <div class="item-image"></div>
+                QQ模型
+            </a>
+            <a href="https://www.midjourney.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'ai-modal')">✏️</div>
+                <div class="item-image"></div>
+                Midjourney
+            </a>
+            <a href="https://www.d-id.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'ai-modal')">✏️</div>
+                <div class="item-image"></div>
+                D-ID
+            </a>
+            <a href="https://www.runwayml.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'ai-modal')">✏️</div>
+                <div class="item-image"></div>
+                Runway
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- 游戏模态框 -->
+<div id="game-modal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">游戏网站</div>
+            <button class="modal-close" onclick="hideModal('game-modal')">&times;</button>
+        </div>
+        <div class="modal-links">
+            <a href="https://www.steampowered.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                Steam
+            </a>
+            <a href="https://www.epicgames.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                Epic Games
+            </a>
+            <a href="https://www.wegame.com.cn" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                WeGame
+            </a>
+            <a href="https://www.origin.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                Origin
+            </a>
+            <a href="https://www.ubisoft.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                Ubisoft
+            </a>
+            <a href="https://www.blizzard.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                暴雪
+            </a>
+            <a href="https://www.riotgames.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                Riot Games
+            </a>
+            <a href="https://www.minecraft.net" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                Minecraft
+            </a>
+            <a href="https://www.rockstargames.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                Rockstar
+            </a>
+            <a href="https://www.ea.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                EA
+            </a>
+            <a href="https://www.nintendo.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                任天堂
+            </a>
+            <a href="https://www.playstation.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                PlayStation
+            </a>
+            <a href="https://www.xbox.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                Xbox
+            </a>
+            <a href="https://www.twitch.tv" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                Twitch
+            </a>
+            <a href="https://www.douyu.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                斗鱼
+            </a>
+            <a href="https://www.huya.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                虎牙
+            </a>
+            <a href="https://www.4399.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                4399小游戏
+            </a>
+            <a href="https://www.7k7k.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'game-modal')">✏️</div>
+                <div class="item-image"></div>
+                7K7K小游戏
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- 电影模态框 -->
+<div id="movie-modal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">电影网站</div>
+            <button class="modal-close" onclick="hideModal('movie-modal')">&times;</button>
+        </div>
+        <div class="modal-links">
+            <a href="https://www.netflix.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'movie-modal')">✏️</div>
+                <div class="item-image"></div>
+                Netflix
+            </a>
+            <a href="https://www.youku.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'movie-modal')">✏️</div>
+                <div class="item-image"></div>
+                优酷
+            </a>
+            <a href="https://www.iqiyi.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'movie-modal')">✏️</div>
+                <div class="item-image"></div>
+                爱奇艺
+            </a>
+            <a href="https://www.tencentvideo.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'movie-modal')">✏️</div>
+                <div class="item-image"></div>
+                腾讯视频
+            </a>
+            <a href="https://www.bilibili.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'movie-modal')">✏️</div>
+                <div class="item-image"></div>
+                哔哩哔哩
+            </a>
+            <a href="https://www.mgtv.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'movie-modal')">✏️</div>
+                <div class="item-image"></div>
+                芒果TV
+            </a>
+            <a href="https://www.disneyplus.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'movie-modal')">✏️</div>
+                <div class="item-image"></div>
+                Disney+
+            </a>
+            <a href="https://www.hulu.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'movie-modal')">✏️</div>
+                <div class="item-image"></div>
+                Hulu
+            </a>
+            <a href="https://www.amazon.com/Prime-Video" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'movie-modal')">✏️</div>
+                <div class="item-image"></div>
+                Prime Video
+            </a>
+            <a href="https://www.hbomax.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'movie-modal')">✏️</div>
+                <div class="item-image"></div>
+                HBO Max
+            </a>
+            <a href="https://www.apple.com/apple-tv-plus" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'movie-modal')">✏️</div>
+                <div class="item-image"></div>
+                Apple TV+
+            </a>
+            <a href="https://www.youtube.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'movie-modal')">✏️</div>
+                <div class="item-image"></div>
+                YouTube
+            </a>
+            <a href="https://www.vimeo.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'movie-modal')">✏️</div>
+                <div class="item-image"></div>
+                Vimeo
+            </a>
+            <a href="https://www.douban.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'movie-modal')">✏️</div>
+                <div class="item-image"></div>
+                豆瓣电影
+            </a>
+            <a href="https://www.imdb.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'movie-modal')">✏️</div>
+                <div class="item-image"></div>
+                IMDb
+            </a>
+            <a href="https://www.rottentomatoes.com" class="modal-link" target="_blank">
+                <div class="edit-icon" onclick="event.stopPropagation(); showModalButtonSettingsModal(this.parentElement, 'movie-modal')">✏️</div>
+                <div class="item-image"></div>
+                烂番茄
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- 添加网站模态框 -->
+<div id="add-site-modal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">添加网站</div>
+            <button class="modal-close" onclick="hideModal('add-site-modal')">&times;</button>
+        </div>
+        <div class="add-site-form">
+            <input type="text" id="site-name" placeholder="网站名称">
+            <input type="text" id="site-url" placeholder="网站URL (包含http://或https://)">
+            <button onclick="addNewSite()">添加网站</button>
+        </div>
+    </div>
+</div>
+
+<!-- 图片设置模态框 -->
+<div id="image-modal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">背景图片设置</div>
+            <button class="modal-close" onclick="hideModal('image-modal')">&times;</button>
+        </div>
+        
+        <!-- 预设背景选择 -->
+        <div class="mb-4">
+            <h4 class="mb-2">预设背景</h4>
+            <div class="preset-backgrounds">
+                <!-- 预设背景将通过JS动态生成 -->
+            </div>
+        </div>
+        
+        <!-- 图片上传区域 -->
+        <div class="mb-4">
+            <h4 class="mb-2">上传自定义背景</h4>
+            <div id="upload-area" class="image-upload-area">
+                <i class="fa fa-cloud-upload" style="font-size: 30px; margin-bottom: 10px;"></i>
+                <p>点击上传图片或拖放图片到此处</p>
+                <p class="text-xs mt-2">支持 JPG, PNG, GIF 格式</p>
+                <input type="file" id="image-upload" accept="image/*" style="display: none;">
+            </div>
+            <img id="image-preview" class="image-preview" alt="预览图片">
+        </div>
+        
+        <!-- 图片滤镜设置 -->
+        <div class="mb-4">
+            <h4 class="mb-2">图片调整</h4>
+            
+            <div class="slider-container">
+                <label>
+                    <span>亮度</span>
+                    <span id="brightness-value">100%</span>
+                </label>
+                <input type="range" id="brightness-slider" class="slider" min="0" max="200" value="100">
+            </div>
+            
+            <div class="slider-container">
+                <label>
+                    <span>对比度</span>
+                    <span id="contrast-value">100%</span>
+                </label>
+                <input type="range" id="contrast-slider" class="slider" min="0" max="200" value="100">
+            </div>
+            
+            <div class="slider-container">
+                <label>
+                    <span>饱和度</span>
+                    <span id="saturation-value">100%</span>
+                </label>
+                <input type="range" id="saturation-slider" class="slider" min="0" max="200" value="100">
+            </div>
+            
+            <div class="slider-container">
+                <label>
+                    <span>透明度</span>
+                    <span id="opacity-value">50%</span>
+                </label>
+                <input type="range" id="opacity-slider" class="slider" min="0" max="100" value="50">
+            </div>
+        </div>
+        
+        <!-- 操作按钮 -->
+        <div class="flex justify-between">
+            <button onclick="resetBackground()" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition">
+                重置背景
+            </button>
+            <button onclick="saveImageSettings()" class="px-4 py-2 bg-primary text-white rounded hover:bg-hover-color transition">
+                保存设置
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 梅干阿牛动态背景设置模态框 -->
+<div id="dynamic-bg-modal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">梅干阿牛动态背景设置</div>
+            <button class="modal-close" onclick="hideModal('dynamic-bg-modal')">&times;</button>
+        </div>
+        
+        <!-- 动态背景类型选择 -->
+        <div class="mb-4">
+            <h4 class="mb-2">动态背景类型</h4>
+            <div class="dynamic-bg-types">
+                <button class="dynamic-bg-type-btn active" data-type="particles">粒子效果</button>
+                <button class="dynamic-bg-type-btn" data-type="gradient">渐变动画</button>
+                <button class="dynamic-bg-type-btn" data-type="wave">波浪效果</button>
+                <button class="dynamic-bg-type-btn" data-type="custom">自定义图片</button>
+            </div>
+        </div>
+        
+        <!-- 自定义图片上传 -->
+        <div id="custom-image-section" class="mb-4">
+            <h4 class="mb-2">上传自定义背景图片</h4>
+            <div id="dynamic-upload-area" class="image-upload-area">
+                <i class="fa fa-cloud-upload" style="font-size: 30px; margin-bottom: 10px;"></i>
+                <p>点击上传图片或拖放图片到此处</p>
+                <p class="text-xs mt-2">支持 JPG, PNG, GIF 格式</p>
+                <input type="file" id="dynamic-image-upload" accept="image/*" style="display: none;">
+            </div>
+            <img id="dynamic-image-preview" class="image-preview" alt="预览图片">
+        </div>
+        
+        <!-- 颜色设置 -->
+        <div class="mb-4">
+            <h4 class="mb-2">颜色设置</h4>
+            
+            <div class="color-picker-container">
+                <label>主色调</label>
+                <input type="color" id="primary-color-picker" value="#ff6b6b">
+                <div class="color-preview" id="primary-color-preview" style="background-color: #ff6b6b;"></div>
+            </div>
+            
+            <div class="color-picker-container">
+                <label>辅助色</label>
+                <input type="color" id="secondary-color-picker" value="#4ecdc4">
+                <div class="color-preview" id="secondary-color-preview" style="background-color: #4ecdc4;"></div>
+            </div>
+            
+            <div class="color-picker-container">
+                <label>背景色</label>
+                <input type="color" id="bg-color-picker" value="#1a535c">
+                <div class="color-preview" id="bg-color-preview" style="background-color: #1a535c;"></div>
+            </div>
+        </div>
+        
+        <!-- 动态效果设置 -->
+        <div class="mb-4">
+            <h4 class="mb-2">动态效果设置</h4>
+            
+            <div class="slider-container">
+                <label>
+                    <span>速度</span>
+                    <span id="speed-value">50%</span>
+                </label>
+                <input type="range" id="speed-slider" class="slider" min="0" max="100" value="50">
+            </div>
+            
+            <div class="slider-container">
+                <label>
+                    <span>密度</span>
+                    <span id="density-value">50%</span>
+                </label>
+                <input type="range" id="density-slider" class="slider" min="0" max="100" value="50">
+            </div>
+            
+            <div class="slider-container">
+                <label>
+                    <span>大小</span>
+                    <span id="size-value">50%</span>
+                </label>
+                <input type="range" id="size-slider" class="slider" min="0" max="100" value="50">
+            </div>
+        </div>
+        
+        <!-- 操作按钮 -->
+        <div class="flex justify-between">
+            <button onclick="resetDynamicBackground()" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition">
+                重置设置
+            </button>
+            <button onclick="applyDynamicBackground()" class="px-4 py-2 bg-primary text-white rounded hover:bg-hover-color transition">
+                应用设置
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Mega New Door 设置模态框 -->
+<div id="mega-new-door-modal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">Mega New Door 设置</div>
+            <button class="modal-close" onclick="hideModal('mega-new-door-modal')">&times;</button>
+        </div>
+        
+        <div class="mb-4">
+            <h4 class="mb-2">框架样式</h4>
+            <div class="dynamic-bg-types">
+                <button class="dynamic-bg-type-btn active" data-type="classic">经典</button>
+                <button class="dynamic-bg-type-btn" data-type="modern">现代</button>
+                <button class="dynamic-bg-type-btn" data-type="minimal">极简</button>
+                <button class="dynamic-bg-type-btn" data-type="custom">自定义</button>
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <h4 class="mb-2">框架颜色</h4>
+            <input type="color" id="frame-color-picker" value="#4a90e2">
+        </div>
+        
+        <div class="mb-4">
+            <h4 class="mb-2">透明度</h4>
+            <input type="range" id="frame-opacity-slider" class="slider" min="0" max="100" value="80">
+            <span id="frame-opacity-value">80%</span>
+        </div>
+        
+        <div class="flex justify-between">
+            <button onclick="resetMegaNewDoor()" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition">
+                重置
+            </button>
+            <button onclick="applyMegaNewDoor()" class="px-4 py-2 bg-primary text-white rounded hover:bg-hover-color transition">
+                应用设置
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 按钮图片设置模态框 -->
+<div id="button-image-modal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">按钮图片设置</div>
+            <button class="modal-close" onclick="hideModal('button-image-modal')">&times;</button>
+        </div>
+        
+        <!-- 当前按钮预览 -->
+        <div class="mb-4 text-center">
+            <h4 class="mb-2">当前按钮</h4>
+            <div id="current-button-preview" class="nav-item mx-auto" style="width: 80px;">
+                <div class="item-image"></div>
+                <span id="current-button-text"></span>
+            </div>
+        </div>
+        
+        <!-- 预设图标选择 -->
+        <div class="mb-4">
+            <h4 class="mb-2">选择预设图标</h4>
+            <div class="preset-icons">
+                <div class="preset-icon-item" data-icon="🔍" onclick="selectPresetIcon(this)">🔍</div>
+                <div class="preset-icon-item" data-icon="📚" onclick="selectPresetIcon(this)">📚</div>
+                <div class="preset-icon-item" data-icon="🎵" onclick="selectPresetIcon(this)">🎵</div>
+                <div class="preset-icon-item" data-icon="🎬" onclick="selectPresetIcon(this)">🎬</div>
+                <div class="preset-icon-item" data-icon="🎮" onclick="selectPresetIcon(this)">🎮</div>
+                <div class="preset-icon-item" data-icon="🛒" onclick="selectPresetIcon(this)">🛒</div>
+                <div class="preset-icon-item" data-icon="🏠" onclick="selectPresetIcon(this)">🏠</div>
+                <div class="preset-icon-item" data-icon="💼" onclick="selectPresetIcon(this)">💼</div>
+                <div class="preset-icon-item" data-icon="📱" onclick="selectPresetIcon(this)">📱</div>
+                <div class="preset-icon-item" data-icon="💻" onclick="selectPresetIcon(this)">💻</div>
+                <div class="preset-icon-item" data-icon="🌐" onclick="selectPresetIcon(this)">🌐</div>
+                <div class="preset-icon-item" data-icon="🔒" onclick="selectPresetIcon(this)">🔒</div>
+            </div>
+        </div>
+        
+        <!-- 上传自定义图片 -->
+        <div class="mb-4">
+            <h4 class="mb-2">上传自定义图片</h4>
+            <div id="button-upload-area" class="image-upload-area">
+                <i class="fa fa-cloud-upload" style="font-size: 30px; margin-bottom: 10px;"></i>
+                <p>点击上传图片或拖放图片到此处</p>
+                <p class="text-xs mt-2">支持 JPG, PNG, GIF 格式 (建议 512x512px)</p>
+                <input type="file" id="button-image-upload" accept="image/*" style="display: none;">
+            </div>
+            
+            <!-- 图片裁剪区域 -->
+            <div id="crop-container" class="crop-container" style="display: none;">
+                <img id="crop-image" style="width: 100%; height: 100%; object-fit: contain;">
+                <div id="crop-area" class="crop-area" style="width: 80px; height: 80px; top: 60px; left: calc(50% - 40px);"></div>
+            </div>
+            
+            <img id="button-image-preview" class="image-preview" alt="按钮图片预览">
+        </div>
+        
+        <!-- 图片调整 -->
+        <div class="mb-4">
+            <h4 class="mb-2">图片调整</h4>
+            
+            <div class="slider-container">
+                <label>
+                    <span>图片大小</span>
+                    <span id="image-size-value">100%</span>
+                </label>
+                <input type="range" id="image-size-slider" class="slider" min="50" max="150" value="100">
+            </div>
+            
+            <div class="slider-container">
+                <label>
+                    <span>图片位置</span>
+                    <span id="image-position-value">居中</span>
+                </label>
+                <input type="range" id="image-position-slider" class="slider" min="0" max="100" value="50">
+            </div>
+        </div>
+        
+        <!-- 操作按钮 -->
+        <div class="flex justify-between">
+            <button onclick="removeButtonImage()" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition">
+                移除图片
+            </button>
+            <div>
+                <button onclick="resetButtonImage()" class="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition mr-2">
+                    重置
+                </button>
+                <button onclick="saveButtonImage()" class="px-4 py-2 bg-primary text-white rounded hover:bg-hover-color transition">
+                    保存设置
+                </button>
+            </div>
+        </div>
+        
+        <!-- 隐藏的输入框，用于存储当前编辑的按钮 -->
+        <input type="hidden" id="current-button-element" value="">
+    </div>
+</div>
+
+<!-- 原有脚本 -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js'></script>
+<script src="1.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows桌面系统模拟器</title>
+    
+    <!-- 引入CSS文件 -->
+    <link rel="stylesheet" href="2.css">
+</head>
+<body>
+    <!-- 背景容器 -->
+    <div class="bg-container" id="bgContainer"></div>
+
+    <!-- 桌面图标 -->
+    <div class="desktop-icons" id="desktopIcons">
+        <div class="icon" data-name="此电脑" onclick="openApp('explorer')">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'><path d='M19 4H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V8h10v2z'/></svg>" alt="此电脑">
+            <span>此电脑</span>
+        </div>
+        <div class="icon" data-name="文档" onclick="openApp('explorer')">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'><path d='M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z'/></svg>" alt="文档">
+            <span>文档</span>
+        </div>
+        <div class="icon" data-name="图片" onclick="openApp('explorer')">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'><path d='M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z'/></svg>" alt="图片">
+            <span>图片</span>
+        </div>
+        <div class="icon" data-name="音乐" onclick="openApp('explorer')">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'><path d='M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6zm-2 16c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z'/></svg>" alt="音乐">
+            <span>音乐</span>
+        </div>
+        <div class="icon" data-name="设置" onclick="openApp('settings')">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'><path d='M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z'/></svg>" alt="设置">
+            <span>设置</span>
+        </div>
+        <div class="icon" data-name="计算器" onclick="openApp('calculator')">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'><path d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9.5 13v-1h1v1h-1zm0-3v-1h1v1h-1zm3 3v-1h1v1h-1zm0-3v-1h1v1h-1zm3 3v-1h1v1h-1zm0-3v-1h1v1h-1zm-9 9H7v-2h2v2zm0-3H7v-2h2v2zm0-3H7v-2h2v2zm3 6h-2v-2h2v2zm0-3h-2v-2h2v2zm0-3h-2v-2h2v2zm3 6h-2v-2h2v2zm0-3h-2v-2h2v2zm0-3h-2v-2h2v2zm3 3h-2v-2h2v2zm0-3h-2v-2h2v2z'/></svg>" alt="计算器">
+            <span>计算器</span>
+        </div>
+        <div class="icon" data-name="记事本" onclick="openApp('notepad')">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'><path d='M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z'/></svg>" alt="记事本">
+            <span>记事本</span>
+        </div>
+        <div class="icon" data-name="浏览器" onclick="openApp('browser')">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'><path d='M20 4H4C2.89 4 2.01 4.89 2.01 6L2 18C2 19.11 2.89 20 4 20H20C21.11 20 22 19.11 22 18V6C22 4.89 21.11 4 20 4ZM4 9H10V11H4V9ZM14 15H4V13H14V15ZM20 15H16V13H20V15ZM20 11H12V9H20V11Z'/></svg>" alt="浏览器">
+            <span>浏览器</span>
+        </div>
+        <div class="icon" data-name="媒体播放器" onclick="openApp('media')">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z'/></svg>" alt="媒体播放器">
+            <span>媒体播放器</span>
+        </div>
+        <!-- 自定义网站图标将动态添加到这里 -->
+    </div>
+
+    <!-- 任务栏 -->
+    <div class="taskbar">
+        <button class="start-btn" id="startBtn">⊞</button>
+        <div class="taskbar-apps" id="taskbarApps">
+            <!-- 任务栏应用将动态添加 -->
+        </div>
+        <div class="system-tray">
+            <span id="clock">12:00</span>
+            <span id="date">2023/11/01</span>
+        </div>
+    </div>
+
+    <!-- 开始菜单 -->
+    <div class="start-menu" id="startMenu">
+        <input type="text" class="start-search" placeholder="搜索应用、设置和文档">
+        <div class="start-apps">
+            <div class="start-app" onclick="openApp('explorer')">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'><path d='M19 4H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V8h10v2z'/></svg>" alt="文件资源管理器">
+                <span>文件资源管理器</span>
+            </div>
+            <div class="start-app" onclick="openApp('settings')">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'><path d='M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z'/></svg>" alt="设置">
+                <span>设置</span>
+            </div>
+            <div class="start-app" onclick="openApp('calculator')">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'><path d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9.5 13v-1h1v1h-1zm0-3v-1h1v1h-1zm3 3v-1h1v1h-1zm0-3v-1h1v1h-1zm3 3v-1h1v1h-1zm0-3v-1h1v1h-1zm-9 9H7v-2h2v2zm0-3H7v-2h2v2zm0-3H7v-2h2v2zm3 6h-2v-2h2v2zm0-3h-2v-2h2v2zm0-3h-2v-2h2v2zm3 6h-2v-2h2v2zm0-3h-2v-2h2v2zm0-3h-2v-2h2v2zm3 3h-2v-2h2v2zm0-3h-2v-2h2v2z'/></svg>" alt="计算器">
+                <span>计算器</span>
+            </div>
+            <div class="start-app" onclick="openApp('notepad')">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'><path d='M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z'/></svg>" alt="记事本">
+                <span>记事本</span>
+            </div>
+            <div class="start-app" onclick="openApp('browser')">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'><path d='M20 4H4C2.89 4 2.01 4.89 2.01 6L2 18C2 19.11 2.89 20 4 20H20C21.11 20 22 19.11 22 18V6C22 4.89 21.11 4 20 4ZM4 9H10V11H4V9ZM14 15H4V13H14V15ZM20 15H16V13H20V15ZM20 11H12V9H20V11Z'/></svg>" alt="浏览器">
+                <span>浏览器</span>
+            </div>
+            <div class="start-app" onclick="openApp('media')">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z'/></svg>" alt="媒体播放器">
+                <span>媒体播放器</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 设置窗口 -->
+    <div class="window" id="settingsWin">
+        <div class="win-header" id="settingsHeader">
+            <div class="win-title">设置</div>
+            <div class="win-controls">
+                <button class="win-btn minimize-btn">—</button>
+                <button class="win-btn maximize-btn">□</button>
+                <button class="win-btn close-btn" onclick="closeApp('settings')">×</button>
+            </div>
+        </div>
+        <div class="win-content">
+            <!-- 设置侧边栏 -->
+            <div class="settings-sidebar">
+                <div class="sidebar-item active" data-tab="background">个性化</div>
+                <div class="sidebar-item" data-tab="icons">桌面图标设置</div>
+                <div class="sidebar-item" data-tab="dynamic">动态壁纸</div>
+                <div class="sidebar-item" data-tab="system">系统</div>
+                <div class="sidebar-item" data-tab="websites">自定义网站</div>
+                <div class="sidebar-item" data-tab="local-images">本地图片</div>
+                <div class="sidebar-item" data-tab="trash">回收站</div>
+            </div>
+
+            <!-- 背景设置 -->
+            <div class="settings-main active" id="background">
+                <div class="settings-section">
+                    <h2 class="settings-title">背景</h2>
+                    <div class="category-tabs">
+                        <div class="category-tab active" data-category="online">在线壁纸</div>
+                        <div class="category-tab" data-category="local">本地壁纸</div>
+                        <div class="category-tab" data-category="A-folder">A文件夹壁纸</div>
+                        <div class="category-tab" data-category="colors">纯色背景</div>
+                    </div>
+                    <div class="settings-card">
+                        <h3 class="card-title">选择背景</h3>
+                        <div class="setting-item">
+                            <label>背景类型:</label>
+                            <select id="bgType">
+                                <option value="picture">图片</option>
+                                <option value="slideshow">幻灯片放映</option>
+                                <option value="color">纯色</option>
+                            </select>
+                        </div>
+                        
+                        <div class="wallpaper-preview" id="wallpaperPreview">
+                            <!-- 壁纸内容将动态加载 -->
+                        </div>
+
+                        <div class="setting-item" style="margin-top: 20px;">
+                            <label>自定义图片:</label>
+                            <input type="text" id="imgLink" placeholder="输入图片URL">
+                            <button onclick="setLinkBg()">应用</button>
+                        </div>
+
+                        <div class="setting-item">
+                            <label>上传图片:</label>
+                            <input type="file" id="localImg" accept="image/*">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 图标设置 -->
+            <div class="settings-main" id="icons">
+                <div class="settings-section">
+                    <h2 class="settings-title">桌面图标设置</h2>
+                    <div class="settings-card">
+                        <h3 class="card-title">选择要在桌面上显示的图标</h3>
+                        <div class="setting-item">
+                            <label>此电脑:</label>
+                            <input type="checkbox" id="iconThisPC" checked>
+                        </div>
+                        <div class="setting-item">
+                            <label>文档:</label>
+                            <input type="checkbox" id="iconDocuments" checked>
+                        </div>
+                        <div class="setting-item">
+                            <label>图片:</label>
+                            <input type="checkbox" id="iconPictures" checked>
+                        </div>
+                        <div class="setting-item">
+                            <label>音乐:</label>
+                            <input type="checkbox" id="iconMusic" checked>
+                        </div>
+                        <div class="setting-item">
+                            <label>设置:</label>
+                            <input type="checkbox" id="iconSettings" checked>
+                        </div>
+                        <div class="setting-item">
+                            <label>计算器:</label>
+                            <input type="checkbox" id="iconCalculator" checked>
+                        </div>
+                        <div class="setting-item">
+                            <label>记事本:</label>
+                            <input type="checkbox" id="iconNotepad" checked>
+                        </div>
+                        <div class="setting-item">
+                            <label>浏览器:</label>
+                            <input type="checkbox" id="iconBrowser" checked>
+                        </div>
+                        <div class="setting-item">
+                            <label>媒体播放器:</label>
+                            <input type="checkbox" id="iconMedia" checked>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 动态壁纸设置 -->
+            <div class="settings-main" id="dynamic">
+                <div class="settings-section">
+                    <h2 class="settings-title">动态壁纸设置</h2>
+                    <div class="settings-card">
+                        <h3 class="card-title">幻灯片放映</h3>
+                        <div class="setting-item">
+                            <label>开启幻灯片:</label>
+                            <input type="checkbox" id="slideshowEnabled">
+                        </div>
+                        <div class="setting-item">
+                            <label>更换间隔:</label>
+                            <div class="slider-container">
+                                <input type="range" min="5" max="60" value="10" class="slider" id="intervalSlider">
+                                <div id="intervalValue">10 秒</div>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <label>无序播放:</label>
+                            <input type="checkbox" id="shuffleSlides">
+                        </div>
+                        <div class="setting-item">
+                            <label>幻灯片源:</label>
+                            <select id="slideshowSource">
+                                <option value="online">在线壁纸</option>
+                                <option value="local">本地图片</option>
+                                <option value="A-folder">A文件夹</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 系统设置 -->
+            <div class="settings-main" id="system">
+                <div class="settings-section">
+                    <h2 class="settings-title">系统设置</h2>
+                    <div class="settings-card">
+                        <h3 class="card-title">显示设置</h3>
+                        <div class="setting-item">
+                            <label>缩放与布局:</label>
+                            <select id="displayScale">
+                                <option value="100">100% (推荐)</option>
+                                <option value="125">125%</option>
+                                <option value="150">150%</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label>屏幕分辨率:</label>
+                            <select id="displayResolution">
+                                <option value="1920x1080">1920 x 1080 (推荐)</option>
+                                <option value="1366x768">1366 x 768</option>
+                                <option value="1280x720">1280 x 720</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="settings-card">
+                        <h3 class="card-title">电源和睡眠</h3>
+                        <div class="setting-item">
+                            <label>屏幕关闭时间:</label>
+                            <select id="screenTimeout">
+                                <option value="1">1 分钟</option>
+                                <option value="5">5 分钟</option>
+                                <option value="10" selected>10 分钟</option>
+                                <option value="15">15 分钟</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 自定义网站设置 -->
+            <div class="settings-main" id="websites">
+                <div class="settings-section">
+                    <h2 class="settings-title">自定义网站</h2>
+                    <div class="settings-card">
+                        <h3 class="card-title">添加新网站</h3>
+                        <div class="setting-item">
+                            <label>网站名称:</label>
+                            <input type="text" id="websiteName" placeholder="输入网站名称">
+                        </div>
+                        <div class="setting-item">
+                            <label>网站URL:</label>
+                            <input type="text" id="websiteUrl" placeholder="输入网站URL (例如: https://www.example.com)">
+                        </div>
+                        <div class="setting-item">
+                            <label>图标URL:</label>
+                            <input type="text" id="websiteIcon" placeholder="输入图标URL (可选)">
+                        </div>
+                        <div class="setting-item">
+                            <label>上传图标:</label>
+                            <input type="file" id="websiteIconFile" accept="image/*">
+                        </div>
+                        <div class="setting-item">
+                            <button onclick="addCustomWebsite()">添加到桌面</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3 class="card-title">已添加的网站</h3>
+                        <div class="website-grid" id="customWebsitesList">
+                            <!-- 自定义网站将动态添加到这里 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 本地图片设置 -->
+            <div class="settings-main" id="local-images">
+                <div class="settings-section">
+                    <h2 class="settings-title">本地图片管理</h2>
+                    <div class="settings-card">
+                        <h3 class="card-title">上传本地图片</h3>
+                        <div class="setting-item">
+                            <label>选择图片:</label>
+                            <input type="file" id="localImageUpload" accept="image/*" multiple>
+                            <button onclick="uploadLocalImages()">上传</button>
+                        </div>
+                    </div>
+                    <div class="settings-card">
+                        <h3 class="card-title">本地图片库</h3>
+                        <div class="local-images" id="localImagesList">
+                            <!-- 本地图片将动态添加到这里 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 回收站 -->
+            <div class="settings-main" id="trash">
+                <div class="settings-section">
+                    <h2 class="settings-title">回收站</h2>
+                    <div class="settings-card">
+                        <h3 class="card-title">已删除的项目</h3>
+                        <div id="trashList">
+                            <!-- 回收站项目将动态添加到这里 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 计算器窗口 -->
+    <div class="window" id="calculatorWin">
+        <div class="win-header" id="calculatorHeader">
+            <div class="win-title">计算器</div>
+            <div class="win-controls">
+                <button class="win-btn minimize-btn">—</button>
+                <button class="win-btn maximize-btn">□</button>
+                <button class="win-btn close-btn" onclick="closeApp('calculator')">×</button>
+            </div>
+        </div>
+        <div class="win-content">
+            <div class="calculator">
+                <div class="calc-display" id="calcDisplay">0</div>
+                <div class="calc-buttons">
+                    <button class="calc-btn" onclick="clearCalc()">C</button>
+                    <button class="calc-btn" onclick="deleteLast()">⌫</button>
+                    <button class="calc-btn operator" onclick="appendOperator('%')">%</button>
+                    <button class="calc-btn operator" onclick="appendOperator('/')">/</button>
+                    
+                    <button class="calc-btn" onclick="appendNumber('7')">7</button>
+                    <button class="calc-btn" onclick="appendNumber('8')">8</button>
+                    <button class="calc-btn" onclick="appendNumber('9')">9</button>
+                    <button class="calc-btn operator" onclick="appendOperator('*')">×</button>
+                    
+                    <button class="calc-btn" onclick="appendNumber('4')">4</button>
+                    <button class="calc-btn" onclick="appendNumber('5')">5</button>
+                    <button class="calc-btn" onclick="appendNumber('6')">6</button>
+                    <button class="calc-btn operator" onclick="appendOperator('-')">-</button>
+                    
+                    <button class="calc-btn" onclick="appendNumber('1')">1</button>
+                    <button class="calc-btn" onclick="appendNumber('2')">2</button>
+                    <button class="calc-btn" onclick="appendNumber('3')">3</button>
+                    <button class="calc-btn operator" onclick="appendOperator('+')">+</button>
+                    
+                    <button class="calc-btn" onclick="toggleSign()">±</button>
+                    <button class="calc-btn" onclick="appendNumber('0')">0</button>
+                    <button class="calc-btn" onclick="appendNumber('.')">.</button>
+                    <button class="calc-btn equals" onclick="calculate()">=</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 记事本窗口 -->
+    <div class="window" id="notepadWin">
+        <div class="win-header" id="notepadHeader">
+            <div class="win-title">记事本</div>
+            <div class="win-controls">
+                <button class="win-btn minimize-btn">—</button>
+                <button class="win-btn maximize-btn">□</button>
+                <button class="win-btn close-btn" onclick="closeApp('notepad')">×</button>
+            </div>
+        </div>
+        <div class="win-content">
+            <div class="notepad">
+                <textarea id="notepadText" placeholder="在这里输入文本..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- 文件管理器窗口 -->
+    <div class="window" id="explorerWin">
+        <div class="win-header" id="explorerHeader">
+            <div class="win-title">文件资源管理器</div>
+            <div class="win-controls">
+                <button class="win-btn minimize-btn">—</button>
+                <button class="win-btn maximize-btn">□</button>
+                <button class="win-btn close-btn" onclick="closeApp('explorer')">×</button>
+            </div>
+        </div>
+        <div class="win-content">
+            <div class="file-explorer">
+                <div class="file-toolbar">
+                    <button class="setting-item button" onclick="goBack()">← 返回</button>
+                    <button class="setting-item button" onclick="goForward()">前进 →</button>
+                    <button class="setting-item button" onclick="uploadFile()">上传文件</button>
+                    <button class="setting-item button" onclick="createFolder()">新建文件夹</button>
+                    <input type="file" id="fileUpload" multiple style="display: none;" onchange="handleFileUpload(this.files)">
+                </div>
+                <div class="file-content">
+                    <div class="file-sidebar">
+                        <div class="sidebar-item active" onclick="navigateTo('desktop')">桌面</div>
+                        <div class="sidebar-item" onclick="navigateTo('documents')">文档</div>
+                        <div class="sidebar-item" onclick="navigateTo('pictures')">图片</div>
+                        <div class="sidebar-item" onclick="navigateTo('music')">音乐</div>
+                        <div class="sidebar-item" onclick="navigateTo('videos')">视频</div>
+                        <div class="sidebar-item" onclick="navigateTo('K')">K文件夹</div>
+                        <div class="sidebar-item" onclick="navigateTo('A')">A文件夹</div>
+                    </div>
+                    <div class="file-list" id="fileList">
+                        <!-- 文件列表将动态生成 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 浏览器窗口 -->
+    <div class="window" id="browserWin">
+        <div class="win-header" id="browserHeader">
+            <div class="win-title">浏览器</div>
+            <div class="win-controls">
+                <button class="win-btn minimize-btn">—</button>
+                <button class="win-btn maximize-btn">□</button>
+                <button class="win-btn close-btn" onclick="closeApp('browser')">×</button>
+            </div>
+        </div>
+        <div class="win-content">
+            <div class="browser">
+                <div class="browser-address-bar">
+                    <input type="text" id="browserUrl" placeholder="输入网址 (例如: https://www.baidu.com)">
+                    <button onclick="browserGo()">前往</button>
+                </div>
+                <iframe id="browserFrame" src="" class="browser-content"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- 媒体播放器窗口 -->
+    <div class="window" id="mediaWin">
+        <div class="win-header" id="mediaHeader">
+            <div class="win-title">媒体播放器</div>
+            <div class="win-controls">
+                <button class="win-btn minimize-btn">—</button>
+                <button class="win-btn maximize-btn">□</button>
+                <button class="win-btn close-btn" onclick="closeApp('media')">×</button>
+            </div>
+        </div>
+        <div class="win-content">
+            <div class="media-player">
+                <div class="media-controls">
+                    <button class="setting-item button" onclick="openMediaFile()">打开文件</button>
+                    <button class="setting-item button" onclick="showUrlInput()">播放链接</button>
+                    <button class="setting-item button" onclick="showDownloadInput()">下载视频</button>
+                    <input type="file" id="mediaFile" accept="image/*,video/*" style="display: none;" onchange="loadMediaFile(this.files[0])">
+                </div>
+                
+                <!-- 链接输入区域 -->
+                <div class="settings-card" id="urlInputSection" style="display: none; margin-bottom: 15px;">
+                    <h3 class="card-title">播放第三方视频链接</h3>
+                    <div class="setting-item">
+                        <label>视频链接:</label>
+                        <input type="text" id="videoUrl" placeholder="粘贴视频链接 (支持MP4, WebM, OGG等)" style="flex: 1;">
+                        <button onclick="loadMediaFromUrl()">播放</button>
+                    </div>
+                </div>
+                
+                <!-- 下载输入区域 -->
+                <div class="settings-card" id="downloadInputSection" style="display: none; margin-bottom: 15px;">
+                    <h3 class="card-title">下载视频</h3>
+                    <div class="setting-item">
+                        <label>下载链接:</label>
+                        <input type="text" id="downloadUrl" placeholder="粘贴视频下载链接" style="flex: 1;">
+                        <button onclick="downloadVideo()">下载</button>
+                    </div>
+                </div>
+                
+                <div class="media-content" id="mediaContent">
+                    <p>请选择一个媒体文件或输入视频链接</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 遮罩层 -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- 右键菜单 -->
+    <div class="context-menu" id="contextMenu">
+        <div class="context-item" onclick="openApp('settings')">个性化</div>
+        <div class="context-item" onclick="refreshDesktop()">刷新</div>
+        <div class="context-item" onclick="showDisplaySettings()">显示设置</div>
+    </div>
+
+    <!-- 引入JavaScript文件 -->
+    <script src="2.js"></script>
+</body>
+</html>
+
+
+
+

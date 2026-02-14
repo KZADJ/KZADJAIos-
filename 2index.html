@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KZADJAI安卓桌面系统</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="1l4.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 启动选择界面 - 初始隐藏 -->
+    <div class="launch-selection" id="launchSelection">
+        <div class="launch-title">
+            <i class="fas fa-android"></i>
+            KZADJAI安卓桌面系统
+        </div>
+        <div class="device-options">
+            <div class="device-option" onclick="selectDeviceMode('tablet')">
+                <div class="device-icon">
+                    <i class="fas fa-tablet-alt"></i>
+                </div>
+                <div class="device-name">平板模式</div>
+                <div class="device-desc">专为平板电脑优化的大屏界面，适合10-12英寸平板使用，侧边栏布局。</div>
+            </div>
+            <div class="device-option" onclick="selectDeviceMode('phone')">
+                <div class="device-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="device-name">手机模式</div>
+                <div class="device-desc">专为智能手机优化的移动界面，适合5-7英寸手机使用，底部导航栏。</div>
+            </div>
+        </div>
+        
+        <!-- 添加快速设置按钮到启动界面 -->
+        <div style="margin-top: 50px; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+            <button class="btn-primary" onclick="openSettingsFromLaunch()" style="padding: 15px 30px; font-size: 1.1rem;">
+                <i class="fas fa-cog"></i>
+                快速设置
+            </button>
+            <button class="recycle-bin-btn" onclick="openRecycleBin()" style="padding: 15px 30px; font-size: 1.1rem;">
+                <i class="fas fa-trash-restore"></i>
+                回收站管理
+            </button>
+            <button class="btn-secondary" onclick="showNotification('点击上方平板或手机模式选项开始使用', 'info')" style="padding: 15px 30px; font-size: 1.1rem;">
+                <i class="fas fa-question-circle"></i>
+                使用帮助
+            </button>
+            <button class="exit-btn" onclick="hideLaunchSelection()" style="padding: 15px 30px; font-size: 1.1rem;">
+                <i class="fas fa-times"></i>
+                关闭
+            </button>
+        </div>
+    </div>
+    
+    <!-- 动态背景效果容器 -->
+    <div class="dynamic-background" id="dynamicBackground"></div>
+    
+    <!-- 背景容器 -->
+    <div class="bg-container" id="bgContainer"></div>
+    
+    <!-- 覆盖层 -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- 主启动按钮 - 安卓图标 -->
+    <div class="main-launcher" id="mainLauncher" onclick="showLaunchSelection()">
+        <i class="fab fa-android"></i>
+    </div>
+    
+    <!-- 安卓桌面系统 -->
+    <div class="android-desktop" id="androidDesktop">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="status-left">
+                <div id="currentTime" class="status-item">00:00</div>
+                <div class="status-item" id="wifiStatus">
+                    <div class="wifi-icon">
+                        <div class="wifi-circle wifi-circle-1"></div>
+                        <div class="wifi-circle wifi-circle-2"></div>
+                        <div class="wifi-circle wifi-circle-3"></div>
+                        <div class="wifi-circle wifi-circle-4"></div>
+                    </div>
+                </div>
+                <div class="status-item" id="signalStatus">
+                    <div class="signal-bars">
+                        <div class="signal-bar" style="height: 3px;"></div>
+                        <div class="signal-bar" style="height: 6px;"></div>
+                        <div class="signal-bar" style="height: 9px;"></div>
+                        <div class="signal-bar" style="height: 12px;"></div>
+                    </div>
+                </div>
+                <div id="currentDate" class="status-item">2023年1月1日</div>
+            </div>
+            <div class="status-right">
+                <div class="status-item" id="batteryStatus">
+                    <div class="battery-container">
+                        <div class="battery-level" id="batteryLevel" style="width: 80%; background: white;"></div>
+                        <div class="battery-tip"></div>
+                    </div>
+                    <span id="batteryPercent">80%</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 标题栏 -->
+        <div class="title-bar">
+            <button class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="title">
+                <i class="fas fa-th-large"></i>
+                <span id="currentCategory">桌面中心</span>
+            </div>
+            
+            <div style="display: flex; gap: 10px;">
+                <button class="recycle-bin-btn" onclick="openRecycleBin()" style="padding: 10px 18px; font-size: 0.9rem;">
+                    <i class="fas fa-trash-restore"></i>
+                    回收站
+                </button>
+                <button class="btn-secondary" onclick="openSettings()" style="padding: 10px 18px; font-size: 0.9rem;">
+                    <i class="fas fa-cog"></i>
+                    设置
+                </button>
+                <button class="exit-btn" onclick="closeAndroidDesktop()">
+                    <i class="fas fa-times"></i>
+                    退出
+                </button>
+            </div>
+        </div>
+        
+        <!-- 桌面主体 -->
+        <div class="desktop-main">
+            <!-- 分类背景 -->
+            <img class="category-background" id="categoryBackground" src="" style="display: none;">
+            
+            <!-- 分类侧边栏 -->
+            <div class="category-sidebar" id="categorySidebar">
+                <div class="category-item active" onclick="switchCategory('home')">
+                    <div class="category-icon" style="background: #2196F3;">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="category-name">桌面中心</div>
+                </div>
+                
+                <div class="category-item" onclick="switchCategory('games')">
+                    <div class="category-icon" style="background: #F44336;">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="category-name">游戏中心</div>
+                </div>
+                
+                <div class="category-item" onclick="switchCategory('social')">
+                    <div class="category-icon" style="background: #4CAF50;">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="category-name">社交媒体</div>
+                </div>
+                
+                <div class="category-item" onclick="switchCategory('tools')">
+                    <div class="category-icon" style="background: #FF9800;">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="category-name">实用工具</div>
+                </div>
+                
+                <div class="category-item" onclick="switchCategory('entertainment')">
+                    <div class="category-icon" style="background: #9C27B0;">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="category-name">娱乐休闲</div>
+                </div>
+                
+                <div class="category-item" onclick="switchCategory('news')">
+                    <div class="category-icon" style="background: #607D8B;">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div class="category-name">新闻资讯</div>
+                </div>
+                
+                <div class="category-item" onclick="switchCategory('education')">
+                    <div class="category-icon" style="background: #009688;">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="category-name">学习资源</div>
+                </div>
+                
+                <div class="category-item" onclick="switchCategory('shopping')">
+                    <div class="category-icon" style="background: #E91E63;">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="category-name">购物生活</div>
+                </div>
+                
+                <div class="category-item" onclick="openAddWebsiteDialog()" style="border: 2px dashed rgba(33, 150, 243, 0.5); background: rgba(33, 150, 243, 0.05);">
+                    <div class="category-icon" style="background: rgba(33, 150, 243, 0.2); color: #2196F3;">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="category-name" style="color: #2196F3;">添加网站</div>
+                </div>
+            </div>
+            
+            <!-- 应用网格区域 -->
+            <div class="app-grid-area" id="appGridArea">
+                <div class="app-grid" id="appGrid">
+                    <!-- 应用将通过JavaScript动态生成 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 网页框架容器 -->
+    <div class="web-frame-container" id="webFrameContainer">
+        <div class="frame-header">
+            <div class="frame-title" id="webFrameTitle">
+                <i class="fas fa-globe"></i>
+                网页框架
+            </div>
+            <div class="frame-controls">
+                <button onclick="refreshFrame()" title="刷新">
+                    <i class="fas fa-redo"></i>
+                </button>
+                <button onclick="openInNewTab()" title="新标签页">
+                    <i class="fas fa-external-link-alt"></i>
+                </button>
+                <button onclick="closeWebFrame()" title="关闭">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="frame-content">
+            <iframe id="webFrame" src="about:blank" allowfullscreen></iframe>
+        </div>
+    </div>
+    
+    <!-- 添加网站对话框 -->
+    <div class="dialog" id="addWebsiteDialog">
+        <div class="dialog-header">
+            <div class="dialog-title">
+                <i class="fas fa-plus-circle"></i>
+                添加网站到桌面
+            </div>
+            <button class="dialog-close" onclick="closeAddWebsiteDialog()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label">
+                <i class="fas fa-pencil-alt"></i>
+                网站名称
+            </label>
+            <input type="text" class="form-input" id="websiteName" placeholder="例如：百度搜索">
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label">
+                <i class="fas fa-link"></i>
+                网站地址
+            </label>
+            <input type="text" class="form-input" id="websiteUrl" placeholder="https://www.example.com">
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label">
+                <i class="fas fa-folder"></i>
+                分类选择
+            </label>
+            <select class="form-select" id="websiteCategory">
+                <option value="home">桌面中心</option>
+                <option value="games">游戏中心</option>
+                <option value="social">社交媒体</option>
+                <option value="tools">实用工具</option>
+                <option value="entertainment">娱乐休闲</option>
+                <option value="news">新闻资讯</option>
+                <option value="education">学习资源</option>
+                <option value="shopping">购物生活</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label">
+                <i class="fas fa-palette"></i>
+                图标颜色
+            </label>
+            <div class="color-selector">
+                <div class="color-option active" style="background: #2196F3;" onclick="selectColor('#2196F3')"></div>
+                <div class="color-option" style="background: #4CAF50;" onclick="selectColor('#4CAF50')"></div>
+                <div class="color-option" style="background: #F44336;" onclick="selectColor('#F44336')"></div>
+                <div class="color-option" style="background: #9C27B0;" onclick="selectColor('#9C27B0')"></div>
+                <div class="color-option" style="background: #FF9800;" onclick="selectColor('#FF9800')"></div>
+                <div class="color-option" style="background: #00BCD4;" onclick="selectColor('#00BCD4')"></div>
+                <div class="color-option" style="background: #795548;" onclick="selectColor('#795548')"></div>
+                <div class="color-option" style="background: #607D8B;" onclick="selectColor('#607D8B')"></div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label">
+                <i class="fas fa-icons"></i>
+                图标选择
+            </label>
+            <select class="form-select" id="websiteIcon">
+                <option value="fa-globe">地球图标</option>
+                <option value="fa-search">搜索图标</option>
+                <option value="fa-gamepad">游戏图标</option>
+                <option value="fa-users">社交图标</option>
+                <option value="fa-tools">工具图标</option>
+                <option value="fa-film">视频图标</option>
+                <option value="fa-newspaper">新闻图标</option>
+                <option value="fa-graduation-cap">学习图标</option>
+                <option value="fa-shopping-cart">购物图标</option>
+                <option value="fa-music">音乐图标</option>
+                <option value="fa-video">直播图标</option>
+                <option value="fa-book">书籍图标</option>
+                <option value="fa-cloud">云服务图标</option>
+                <option value="fa-code">编程图标</option>
+                <option value="fa-comment">聊天图标</option>
+                <option value="fa-shopping-bag">商城图标</option>
+                <option value="fa-camera">相机图标</option>
+                <option value="fa-map">地图图标</option>
+            </select>
+        </div>
+        
+        <div class="button-group">
+            <button class="btn-secondary" onclick="closeAddWebsiteDialog()">
+                取消
+            </button>
+            <button class="btn-primary" onclick="saveWebsite()">
+                添加到桌面
+            </button>
+        </div>
+    </div>
+    
+    <!-- 回收站对话框 -->
+    <div class="dialog recycle-bin-dialog" id="recycleBinDialog">
+        <div class="dialog-header">
+            <div class="dialog-title">
+                <i class="fas fa-trash-restore"></i>
+                回收站管理
+            </div>
+            <button class="dialog-close" onclick="closeRecycleBin()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="switchRecycleTab('all')">全部项目</button>
+            <button class="tab" onclick="switchRecycleTab('permanent')">永久收藏</button>
+            <button class="tab" onclick="switchRecycleTab('30days')">30天内删除</button>
+            <button class="tab" onclick="switchRecycleTab('7days')">7天内删除</button>
+            <button class="tab" onclick="switchRecycleTab('tomorrow')">明天删除</button>
+        </div>
+        
+        <div class="tab-content active" id="recycleTabAll">
+            <div id="recycleBinContent">
+                <!-- 回收站内容将通过JavaScript动态生成 -->
+            </div>
+        </div>
+        
+        <div class="tab-content" id="recycleTabPermanent">
+            <div id="recycleBinPermanent">
+                <!-- 永久收藏内容 -->
+            </div>
+        </div>
+        
+        <div class="tab-content" id="recycleTab30Days">
+            <div id="recycleBin30Days">
+                <!-- 30天内删除内容 -->
+            </div>
+        </div>
+        
+        <div class="tab-content" id="recycleTab7Days">
+            <div id="recycleBin7Days">
+                <!-- 7天内删除内容 -->
+            </div>
+        </div>
+        
+        <div class="tab-content" id="recycleTabTomorrow">
+            <div id="recycleBinTomorrow">
+                <!-- 明天删除内容 -->
+            </div>
+        </div>
+        
+        <div class="button-group" style="margin-top: 20px;">
+            <button class="btn-secondary" onclick="emptyRecycleBin()">
+                <i class="fas fa-trash"></i>
+                清空回收站
+            </button>
+            <button class="btn-primary" onclick="restoreAllItems()">
+                <i class="fas fa-redo"></i>
+                恢复全部项目
+            </button>
+        </div>
+    </div>
+    
+    <!-- 设置对话框 -->
+    <div class="dialog control-panel" id="settingsDialog">
+        <div class="dialog-header">
+            <div class="dialog-title">
+                <i class="fas fa-cog"></i>
+                桌面设置
+            </div>
+            <button class="dialog-close" onclick="closeSettings()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('theme')">主题设置</button>
+            <button class="tab" onclick="switchTab('background')">全局背景</button>
+            <button class="tab" onclick="switchTab('dynamic-bg')">动态背景</button>
+            <button class="tab" onclick="switchTab('category-bg')">分类背景</button>
+            <button class="tab" onclick="switchTab('display')">显示设置</button>
+            <button class="tab" onclick="switchTab('status-bar')">状态栏设置</button>
+            <button class="tab" onclick="switchTab('recycle-settings')">回收站设置</button>
+        </div>
+        
+        <!-- 主题设置 -->
+        <div class="tab-content active" id="themeTab">
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-paint-brush"></i>
+                    主题颜色
+                </div>
+                <div class="color-selector">
+                    <div class="color-option active" style="background: #2196F3;" onclick="setThemeColor('#2196F3')"></div>
+                    <div class="color-option" style="background: #4CAF50;" onclick="setThemeColor('#4CAF50')"></div>
+                    <div class="color-option" style="background: #F44336;" onclick="setThemeColor('#F44336')"></div>
+                    <div class="color-option" style="background: #9C27B0;" onclick="setThemeColor('#9C27B0')"></div>
+                    <div class="color-option" style="background: #FF9800;" onclick="setThemeColor('#FF9800')"></div>
+                    <div class="color-option" style="background: #00BCD4;" onclick="setThemeColor('#00BCD4')"></div>
+                    <div class="color-option" style="background: #795548;" onclick="setThemeColor('#795548')"></div>
+                    <div class="color-option" style="background: #607D8B;" onclick="setThemeColor('#607D8B')"></div>
+                </div>
+            </div>
+            
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-moon"></i>
+                    夜间模式
+                </div>
+                <div class="dark-mode-toggle">
+                    <div class="dark-mode-label">
+                        <i class="fas fa-moon"></i>
+                        启用夜间模式
+                    </div>
+                    <div class="toggle-switch" id="darkModeToggle" onclick="toggleDarkMode()">
+                        <div class="toggle-switch-handle"></div>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">
+                    夜间模式会降低亮度，减少蓝光，保护眼睛。
+                </p>
+            </div>
+        </div>
+        
+        <!-- 全局背景设置 -->
+        <div class="tab-content" id="backgroundTab">
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-image"></i>
+                    预设背景
+                </div>
+                <div class="bg-presets">
+                    <div class="bg-preset active" style="background: linear-gradient(135deg, #667eea, #764ba2);" onclick="setBackground('gradient1')"></div>
+                    <div class="bg-preset" style="background: linear-gradient(135deg, #4CAF50, #8BC34A);" onclick="setBackground('gradient2')"></div>
+                    <div class="bg-preset" style="background: linear-gradient(135deg, #9C27B0, #673AB7);" onclick="setBackground('gradient3')"></div>
+                    <div class="bg-preset" style="background: linear-gradient(135deg, #FF9800, #FF5722);" onclick="setBackground('gradient4')"></div>
+                    <div class="bg-preset" style="background: linear-gradient(135deg, #00BCD4, #009688);" onclick="setBackground('gradient5')"></div>
+                    <div class="bg-preset" style="background: linear-gradient(135deg, #F44336, #E91E63);" onclick="setBackground('gradient6')"></div>
+                </div>
+            </div>
+            
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-upload"></i>
+                    上传背景图片
+                </div>
+                <div class="upload-area" onclick="document.getElementById('imageUpload').click()">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <div class="upload-text">点击上传背景图片</div>
+                    <div class="upload-subtext">支持 JPG, PNG, GIF 格式</div>
+                </div>
+                <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+            </div>
+            
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-link"></i>
+                    网络图片地址
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" id="imageUrl" placeholder="输入图片URL地址">
+                </div>
+                <button class="btn-primary" onclick="setImageFromUrl()" style="width: 100%;">
+                    <i class="fas fa-download"></i>
+                    应用网络图片
+                </button>
+            </div>
+            
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-video"></i>
+                    视频背景
+                </div>
+                <div class="upload-area" onclick="document.getElementById('videoUpload').click()">
+                    <div class="upload-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="upload-text">点击上传视频背景</div>
+                    <div class="upload-subtext">支持 MP4, WebM 格式</div>
+                </div>
+                <input type="file" id="videoUpload" accept="video/*" style="display: none;">
+            </div>
+            
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-link"></i>
+                    网络视频地址
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" id="videoUrl" placeholder="输入视频URL地址">
+                </div>
+                <button class="btn-primary" onclick="setVideoFromUrl()" style="width: 100%;">
+                    <i class="fas fa-download"></i>
+                    应用网络视频
+                </button>
+            </div>
+        </div>
+        
+        <!-- 动态背景设置 -->
+        <div class="tab-content" id="dynamicBgTab">
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-star"></i>
+                    动态背景效果
+                </div>
+                <p style="margin-bottom: 20px; color: #666; font-size: 0.9rem;">
+                    选择喜欢的动态背景效果，让桌面更加生动
+                </p>
+                
+                <div class="dynamic-bg-options">
+                    <div class="dynamic-bg-option active" onclick="setDynamicBackground('none')">
+                        <div class="dynamic-bg-icon">
+                            <i class="fas fa-ban"></i>
+                        </div>
+                        <div class="dynamic-bg-name">无效果</div>
+                        <div class="dynamic-bg-desc">关闭所有动态背景效果</div>
+                    </div>
+                    
+                    <div class="dynamic-bg-option" onclick="setDynamicBackground('particles')">
+                        <div class="dynamic-bg-icon">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                        <div class="dynamic-bg-name">粒子效果</div>
+                        <div class="dynamic-bg-desc">漂浮的彩色粒子动画</div>
+                    </div>
+                    
+                    <div class="dynamic-bg-option" onclick="setDynamicBackground('gradient-flow')">
+                        <div class="dynamic-bg-icon">
+                            <i class="fas fa-wave-square"></i>
+                        </div>
+                        <div class="dynamic-bg-name">渐变流动</div>
+                        <div class="dynamic-bg-desc">流动的渐变色彩背景</div>
+                    </div>
+                    
+                    <div class="dynamic-bg-option" onclick="setDynamicBackground('grid')">
+                        <div class="dynamic-bg-icon">
+                            <i class="fas fa-border-all"></i>
+                        </div>
+                        <div class="dynamic-bg-name">网格动画</div>
+                        <div class="dynamic-bg-desc">移动的科技感网格背景</div>
+                    </div>
+                    
+                    <div class="dynamic-bg-option" onclick="setDynamicBackground('stars')">
+                        <div class="dynamic-bg-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="dynamic-bg-name">星空效果</div>
+                        <div class="dynamic-bg-desc">闪烁的星空背景动画</div>
+                    </div>
+                    
+                    <div class="dynamic-bg-option" onclick="setDynamicBackground('bubbles')">
+                        <div class="dynamic-bg-icon">
+                            <i class="fas fa-circle"></i>
+                        </div>
+                        <div class="dynamic-bg-name">气泡效果</div>
+                        <div class="dynamic-bg-desc">浮动上升的彩色气泡</div>
+                    </div>
+                </div>
+                
+                <div class="panel-section">
+                    <div class="panel-section-title">
+                        <i class="fas fa-sliders-h"></i>
+                        动态背景设置
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-tachometer-alt"></i>
+                            动画速度
+                        </label>
+                        <input type="range" class="form-input" id="animationSpeed" min="1" max="10" value="5" style="padding: 0;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-palette"></i>
+                            粒子颜色
+                        </label>
+                        <div class="color-selector">
+                            <div class="color-option active" style="background: #2196F3;" onclick="setParticleColor('#2196F3')"></div>
+                            <div class="color-option" style="background: #4CAF50;" onclick="setParticleColor('#4CAF50')"></div>
+                            <div class="color-option" style="background: #F44336;" onclick="setParticleColor('#F44336')"></div>
+                            <div class="color-option" style="background: #9C27B0;" onclick="setParticleColor('#9C27B0')"></div>
+                            <div class="color-option" style="background: #FF9800;" onclick="setParticleColor('#FF9800')"></div>
+                            <div class="color-option" style="background: #00BCD4;" onclick="setParticleColor('#00BCD4')"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 分类背景设置 -->
+        <div class="tab-content" id="categoryBgTab">
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-layer-group"></i>
+                    分类背景设置
+                </div>
+                <p style="margin-bottom: 20px; color: #666; font-size: 0.9rem;">
+                    为每个分类设置独立的背景图片或视频
+                </p>
+                
+                <div id="categoryBgSettings">
+                    <!-- 分类背景设置将通过JavaScript动态生成 -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- 显示设置 -->
+        <div class="tab-content" id="displayTab">
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-desktop"></i>
+                    界面模式
+                </div>
+                <div class="dynamic-bg-options">
+                    <div class="dynamic-bg-option active" onclick="changeDeviceMode('tablet')">
+                        <div class="dynamic-bg-icon">
+                            <i class="fas fa-tablet-alt"></i>
+                        </div>
+                        <div class="dynamic-bg-name">平板模式</div>
+                        <div class="dynamic-bg-desc">侧边栏布局，大屏体验</div>
+                    </div>
+                    
+                    <div class="dynamic-bg-option" onclick="changeDeviceMode('phone')">
+                        <div class="dynamic-bg-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="dynamic-bg-name">手机模式</div>
+                        <div class="dynamic-bg-desc">底部导航栏，单手操作</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-icons"></i>
+                    图标大小
+                </div>
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-expand-alt"></i>
+                        应用图标大小
+                    </label>
+                    <input type="range" class="form-input" id="iconSize" min="40" max="80" value="60" style="padding: 0;">
+                    <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                        <span style="font-size: 0.9rem; color: #666;">小</span>
+                        <span style="font-size: 0.9rem; color: #666;" id="iconSizeValue">中</span>
+                        <span style="font-size: 0.9rem; color: #666;">大</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-eye"></i>
+                    显示设置
+                </div>
+                <div class="form-group">
+                    <label class="form-label" style="justify-content: space-between; width: 100%;">
+                        <span><i class="fas fa-bell"></i> 显示通知</span>
+                        <div class="toggle-switch active" id="notificationToggle" onclick="toggleSetting('notifications')"></div>
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" style="justify-content: space-between; width: 100%;">
+                        <span><i class="fas fa-clock"></i> 显示秒数</span>
+                        <div class="toggle-switch" id="secondsToggle" onclick="toggleSetting('seconds')"></div>
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" style="justify-content: space-between; width: 100%;">
+                        <span><i class="fas fa-calendar"></i> 显示日期</span>
+                        <div class="toggle-switch active" id="dateToggle" onclick="toggleSetting('date')"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 状态栏设置 -->
+        <div class="tab-content" id="statusBarTab">
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-wifi"></i>
+                    WiFi设置
+                </div>
+                <div class="form-group">
+                    <label class="form-label" style="justify-content: space-between; width: 100%;">
+                        <span>显示WiFi图标</span>
+                        <div class="toggle-switch active" id="wifiToggle" onclick="toggleStatusBarItem('wifi')"></div>
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-signal"></i>
+                        WiFi信号强度
+                    </label>
+                    <input type="range" class="form-input" id="wifiStrength" min="0" max="4" value="4" style="padding: 0;">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-power-off"></i>
+                        WiFi开关
+                    </label>
+                    <div class="button-group">
+                        <button class="btn-primary" onclick="turnOnWiFi()" style="flex: 1;">
+                            <i class="fas fa-toggle-on"></i>
+                            开启WiFi
+                        </button>
+                        <button class="btn-secondary" onclick="turnOffWiFi()" style="flex: 1;">
+                            <i class="fas fa-toggle-off"></i>
+                            关闭WiFi
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-signal"></i>
+                    移动网络设置
+                </div>
+                <div class="form-group">
+                    <label class="form-label" style="justify-content: space-between; width: 100%;">
+                        <span>显示信号图标</span>
+                        <div class="toggle-switch active" id="signalToggle" onclick="toggleStatusBarItem('signal')"></div>
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-signal-alt"></i>
+                        信号强度
+                    </label>
+                    <input type="range" class="form-input" id="signalStrength" min="0" max="4" value="4" style="padding: 0;">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-sim-card"></i>
+                        网络类型
+                    </label>
+                    <select class="form-select" id="networkType">
+                        <option value="5G">5G</option>
+                        <option value="4G">4G</option>
+                        <option value="3G">3G</option>
+                        <option value="2G">2G</option>
+                        <option value="无服务">无服务</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-battery-full"></i>
+                    电池设置
+                </div>
+                <div class="form-group">
+                    <label class="form-label" style="justify-content: space-between; width: 100%;">
+                        <span>显示电池图标</span>
+                        <div class="toggle-switch active" id="batteryToggle" onclick="toggleStatusBarItem('battery')"></div>
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-battery-three-quarters"></i>
+                        电池电量
+                    </label>
+                    <input type="range" class="form-input" id="batteryLevel" min="0" max="100" value="80" style="padding: 0;">
+                    <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                        <span style="font-size: 0.9rem; color: #666;">0%</span>
+                        <span style="font-size: 0.9rem; color: #666;" id="batteryLevelValue">80%</span>
+                        <span style="font-size: 0.9rem; color: #666;">100%</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-bolt"></i>
+                        充电状态
+                    </label>
+                    <div class="button-group">
+                        <button class="btn-primary" onclick="setCharging(true)" style="flex: 1;">
+                            <i class="fas fa-plug"></i>
+                            充电中
+                        </button>
+                        <button class="btn-secondary" onclick="setCharging(false)" style="flex: 1;">
+                            <i class="fas fa-battery-empty"></i>
+                            未充电
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-clock"></i>
+                    时间设置
+                </div>
+                <div class="form-group">
+                    <label class="form-label" style="justify-content: space-between; width: 100%;">
+                        <span>显示时间</span>
+                        <div class="toggle-switch active" id="timeToggle" onclick="toggleStatusBarItem('time')"></div>
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-calendar-alt"></i>
+                        显示日期
+                    </label>
+                    <select class="form-select" id="dateFormat">
+                        <option value="full">完整日期 (2023年12月31日)</option>
+                        <option value="short">简短日期 (12/31)</option>
+                        <option value="weekday">星期几 (星期日)</option>
+                        <option value="none">不显示日期</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-clock"></i>
+                        时间格式
+                    </label>
+                    <select class="form-select" id="timeFormat">
+                        <option value="24">24小时制 (14:30)</option>
+                        <option value="12">12小时制 (2:30 PM)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-sliders-h"></i>
+                    状态栏控制
+                </div>
+                <div class="form-group">
+                    <label class="form-label" style="justify-content: space-between; width: 100%;">
+                        <span>自动隐藏状态栏</span>
+                        <div class="toggle-switch" id="autoHideToggle" onclick="toggleSetting('autoHideStatusBar')"></div>
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" style="justify-content: space-between; width: 100%;">
+                        <span>状态栏透明效果</span>
+                        <div class="toggle-switch active" id="transparentToggle" onclick="toggleSetting('transparentStatusBar')"></div>
+                    </label>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn-primary" onclick="resetStatusBarSettings()" style="flex: 1;">
+                        <i class="fas fa-redo"></i>
+                        重置状态栏
+                    </button>
+                    <button class="btn-secondary" onclick="testStatusBar()" style="flex: 1;">
+                        <i class="fas fa-eye"></i>
+                        测试状态栏
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 回收站设置 -->
+        <div class="tab-content" id="recycleSettingsTab">
+            <div class="panel-section">
+                <div class="panel-section-title">
+                    <i class="fas fa-trash-alt"></i>
+                    回收站设置
+                </div>
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-clock"></i>
+                        默认保留时间
+                    </label>
+                    <select class="form-select" id="defaultRetentionTime">
+                        <option value="7">7天</option>
+                        <option value="30" selected>30天</option>
+                        <option value="permanent">永久收藏</option>
+                        <option value="tomorrow">明天删除</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" style="justify-content: space-between; width: 100%;">
+                        <span><i class="fas fa-bell"></i> 删除前确认</span>
+                        <div class="toggle-switch active" id="deleteConfirmToggle" onclick="toggleSetting('deleteConfirm')"></div>
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" style="justify-content: space-between; width: 100%;">
+                        <span><i class="fas fa-broom"></i> 自动清理过期项目</span>
+                        <div class="toggle-switch active" id="autoCleanToggle" onclick="toggleSetting('autoClean')"></div>
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-bell-slash"></i>
+                        清理前通知
+                    </label>
+                    <select class="form-select" id="cleanNotification">
+                        <option value="none">不通知</option>
+                        <option value="1day" selected>提前1天通知</option>
+                        <option value="3days">提前3天通知</option>
+                        <option value="7days">提前7天通知</option>
+                    </select>
+                </div>
+                
+                <div class="panel-section">
+                    <div class="panel-section-title">
+                        <i class="fas fa-chart-bar"></i>
+                        回收站统计
+                    </div>
+                    <div style="background: rgba(0, 0, 0, 0.05); padding: 20px; border-radius: 12px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <span>总项目数:</span>
+                            <span id="recycleTotalCount">0</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <span>永久收藏:</span>
+                            <span id="recyclePermanentCount">0</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <span>30天内删除:</span>
+                            <span id="recycle30DaysCount">0</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <span>7天内删除:</span>
+                            <span id="recycle7DaysCount">0</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>明天删除:</span>
+                            <span id="recycleTomorrowCount">0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn-primary" onclick="checkExpiredItems()" style="width: 100%; margin-top: 20px;">
+                    <i class="fas fa-search"></i>
+                    检查过期项目
+                </button>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <button class="btn-secondary" onclick="resetAllSettings()">
+                重置所有设置
+            </button>
+            <button class="btn-primary" onclick="applySettings()">
+                应用设置
+            </button>
+        </div>
+    </div>
+    
+    <!-- 通知 -->
+    <div class="notification" id="notification">
+        <i class="fas fa-info-circle"></i>
+        <span id="notificationText">通知内容</span>
+    </div>
+
+    <script src="4.js"></script>
+</body>
+</html>
+
